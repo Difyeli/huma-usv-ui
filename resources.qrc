@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Huma3.png</file>
+        <file>images/Telemetri.png</file>
+        <file>images/Graph.png</file>
+        <file>images/GraphSquare.png</file>
+        <file>images/GraphRect.png</file>
+        <file>images/Ayarlar.png</file>
+        <file>images/States1.png</file>
+        <file>images/arrow.png</file>
+        <file>images/Background1.png</file>
+        <file>images/Background2.png</file>
+        <file>images/Background3.png</file>
+        <file>images/taleback.png</file>
+        <file>images/WhiteBG.png</file>
+        <file>images/GrayBG.png</file>
+        <file>images/ConnectionLogo.png</file>
+        <file>images/SpeedLogo.png</file>
+        <file>images/MapLogo.png</file>
+        <file>images/QuestLogo.png</file>
+        <file>images/TelemetryLogo.png</file>
+        <file>images/Background4.png</file>
+        <file>images/ConnectButton.png</file>
+        <file>images/DisconnectButton.png</file>
+        <file>images/SettingsButton.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>MapView.qml</file>
+        <file>icons/waypoint.png</file>
+        <file>icons/usv.png</file>
+    </qresource>
+</RCC>
