@@ -1,0 +1,3 @@
+timestamp,pitch,roll,yaw,heading,longitude,latitude,voltage,temperature,questNo,setPoint,currentSpeed
+2025-07-14T23:55:18.830,0.11,-0.49,-0.52,243.63,32.8931,39.9068,11.64,29.8,3,0.57,0.85
+2025-07-14T23:55:18.835,0.63,0.48,-0.11,301.48,32.8754,39.9491,12.39,21.5,4,0.97,0.64

@@ -365,29 +365,33 @@ release/moc_connectionsettingsdialog.cpp: ../../connectionsettingsdialog.h \
 	D:\Qt\6.8.3\mingw_64\bin\moc.exe $(DEFINES) --include D:/QtProjects/deneme/build/Desktop_Qt_6_8_3_MinGW_64_bit-Debug/release/moc_predefs.h @release/mocinclude.opt ..\..\connectionsettingsdialog.h -o release\moc_connectionsettingsdialog.cpp
 
 release/moc_mainwindow.cpp: ../../mainwindow.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPort \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialport.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevice.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qglobal.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPortInfo \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportinfo.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlist.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydatapointer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydataops.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydata.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpair.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainerfwd.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfigmacros.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfiginclude.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qconfig.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcore-config.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfigmacros.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcoreexports.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qprocessordetection.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qsystemdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qassert.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcoreexports.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qassert.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtnoop.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qglobal.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversion.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypeinfo.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainerfwd.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qsysinfo.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlogging.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qflags.h \
@@ -413,29 +417,21 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtresource.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qttranslation.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qversiontagging.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevicebase.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobject.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainertools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20type_traits.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qnamespace.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompare.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcomparehelpers.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20type_traits.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtmetamacros.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstring.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qchar.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearray.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qrefcount.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydata.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpair.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydatapointer.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydataops.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainertools_impl.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearrayview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringfwd.h \
@@ -448,15 +444,23 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringbuilder.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringconverter.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringconverter_base.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlist.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiterator.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearraylist.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringlist.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qalgorithms.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringmatcher.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qscopedpointer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportglobal.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qtserialportexports.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPort \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialport.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevice.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevicebase.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobject.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qmetatype.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qdatastream.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfloat16.h \
@@ -471,8 +475,6 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qproperty.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qshareddata.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpropertyprivate.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportglobal.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qtserialportexports.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qmainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1092,67 +1094,37 @@ release/connectionsettingsdialog.o: ../../connectionsettingsdialog.cpp ../../con
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qinputmethod.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlocale.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qguiapplication_platform.h \
-		ui_connectionsettingsdialog.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QVariant \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QAbstractButton \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QApplication \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qapplication.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QComboBox \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qcombobox.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstyleoption.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qvalidator.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qregularexpression.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qslider.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractslider.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstyle.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtabbar.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtabwidget.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialogButtonBox \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFormLayout \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qformlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLayout \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayoutitem.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QWidget
+		ui_connectionsettingsdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\connectionsettingsdialog.o ..\..\connectionsettingsdialog.cpp
 
 release/main.o: ../../main.cpp ../../mainwindow.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPort \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialport.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevice.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qglobal.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPortInfo \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportinfo.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlist.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydatapointer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydataops.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydata.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpair.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainerfwd.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfigmacros.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfiginclude.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qconfig.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcore-config.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfigmacros.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcoreexports.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qprocessordetection.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qsystemdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qassert.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcoreexports.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qassert.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtnoop.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qglobal.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversion.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypeinfo.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainerfwd.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qsysinfo.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlogging.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qflags.h \
@@ -1178,29 +1150,21 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtresource.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qttranslation.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qversiontagging.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevicebase.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobject.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainertools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20type_traits.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qnamespace.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompare.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcomparehelpers.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20type_traits.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtmetamacros.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstring.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qchar.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearray.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qrefcount.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydata.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpair.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydatapointer.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydataops.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainertools_impl.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearrayview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringfwd.h \
@@ -1213,15 +1177,23 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringbuilder.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringconverter.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringconverter_base.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlist.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiterator.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearraylist.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringlist.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qalgorithms.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringmatcher.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qscopedpointer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportglobal.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qtserialportexports.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPort \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialport.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevice.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevicebase.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobject.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qmetatype.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qdatastream.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfloat16.h \
@@ -1236,8 +1208,6 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qproperty.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qshareddata.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpropertyprivate.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportglobal.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qtserialportexports.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qmainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1419,29 +1389,33 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\..\main.cpp
 
 release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPort \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialport.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevice.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qglobal.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPortInfo \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportinfo.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlist.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydatapointer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydataops.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydata.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpair.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainerfwd.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfigmacros.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfiginclude.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qconfig.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcore-config.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtconfigmacros.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcoreexports.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversionchecks.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qprocessordetection.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qsystemdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qassert.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompilerdetection.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtcoreexports.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtclasshelpermacros.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qassert.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtnoop.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypes.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qglobal.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtversion.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtypeinfo.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainerfwd.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qsysinfo.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlogging.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qflags.h \
@@ -1467,29 +1441,21 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtresource.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qttranslation.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qversiontagging.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevicebase.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobject.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainertools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20type_traits.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qnamespace.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcompare.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcomparehelpers.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20type_traits.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtmetamacros.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstring.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qchar.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearray.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qrefcount.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydata.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpair.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydatapointer.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qarraydataops.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcontainertools_impl.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qxptype_traits.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20functional.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/q20memory.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearrayview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringfwd.h \
@@ -1502,15 +1468,23 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringbuilder.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringconverter.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringconverter_base.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlist.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiterator.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbytearraylist.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringlist.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qalgorithms.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qstringmatcher.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qscopedpointer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportglobal.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qtserialportexports.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/QSerialPort \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialport.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevice.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qiodevicebase.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobject.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qmetatype.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qdatastream.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfloat16.h \
@@ -1525,8 +1499,6 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qproperty.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qshareddata.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qpropertyprivate.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qserialportglobal.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtSerialPort/qtserialportexports.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QMainWindow \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qmainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1701,6 +1673,9 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QDateTime \
 		ui_mainwindow.h \
+		../../connectionsettingsdialog.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialog \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialog.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/QChartView \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/qchartview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/QChart \
@@ -1718,30 +1693,6 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QAction \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QIcon \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QApplication \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qapplication.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFormLayout \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qformlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLayout \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayoutitem.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPushButton \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qpushbutton.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QStatusBar \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstatusbar.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QWidget \
-		../../connectionsettingsdialog.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialog \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialog.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QComboBox \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qcombobox.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -1760,7 +1711,23 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtQuick/qquickitem.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtQml/qqmlcomponent.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qaccessible.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qaccessible_base.h
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qaccessible_base.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLineEdit \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlineedit.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextcursor.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextformat.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPushButton \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QHBoxLayout \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/qrc_qml.o: release/qrc_qml.cpp 

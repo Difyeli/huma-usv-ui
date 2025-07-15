@@ -14,6 +14,10 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QQuickItem>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QHBoxLayout>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -95,6 +99,9 @@ MainWindow::~MainWindow()
     }
     if (serial->isOpen())
         serial->close();
+
+      qDeleteAll(m_waypointRows);
+
     delete ui;
 }
 
@@ -156,6 +163,18 @@ void MainWindow::on_settingsButton_clicked()
         currentBaudRate = dlg.baudRate();
         ui->portValueLabel->setText(currentPortName);
         ui->baudValueLabel->setText(QString::number(currentBaudRate));
+    }
+
+    QStringList ports;
+    for (const QSerialPortInfo &info : QSerialPortInfo::availablePorts()) {
+        ports << info.portName();
+        qDebug() << "Found serial port:" << info.portName();
+    }
+    if (ports.isEmpty()) {
+        qWarning() << "Hiç seri port bulunamadı!";
+    } else {
+        // defaults
+        currentPortName = ports.first();
     }
 }
 
@@ -246,9 +265,9 @@ void MainWindow::showDataPoint(const QPointF &point, bool state)
 }
 
 
-void MainWindow::addWaypoint(double lat, double lon)
-{
-    qDebug() << "Waypoint:" << lat << lon;
+void MainWindow::addWaypoint(double lat, double lon) {
+    qDebug() << "Yeni waypoint eklendi:" << lat << lon;
+    // Burada ileride listeye de ekleyebilirsin, CSV’ye yazabilirsin...
 }
 
 void MainWindow::updateMapPosition(double latitude, double longitude)

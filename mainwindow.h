@@ -1,6 +1,7 @@
     #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QSerialPortInfo>
 #include <QtSerialPort/QSerialPort>
 #include <QMainWindow>
 #include <QtCharts/QSplineSeries>
@@ -28,8 +29,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
     Q_INVOKABLE void addWaypoint(double lat, double lon);
+
 
 private slots:
     void handleSerialData();
@@ -62,6 +63,10 @@ private:
     QFile          *csvFile    = nullptr;
     QTextStream    *csvStream  = nullptr;
     bool            recording  = false;
+
+    QList<QWidget*>   m_waypointRows;
+    // QML’den gelen tıklamaları yakalamak için slot
+
 
 };
 #endif // MAINWINDOW_H
