@@ -22,6 +22,9 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+class QTableWidgetItem;
+class QPushButton;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -30,14 +33,16 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     Q_INVOKABLE void addWaypoint(double lat, double lon);
-
+    Q_INVOKABLE void removeWaypointAt(int index);
+    Q_INVOKABLE void updateWaypointAt(int index, double lat, double lon);
 
 private slots:
     void handleSerialData();
     void on_connectButton_clicked();
     void showDataPoint(const QPointF &point, bool state);
     void on_settingsButton_clicked();
-
+    void handleDeleteButton();
+    void handleItemChanged(QTableWidgetItem *item);
 signals:
     void telemetryReceived(const QByteArray &data);
     void connectionStatusChanged(bool);
@@ -67,6 +72,7 @@ private:
     QList<QWidget*>   m_waypointRows;
     // QML’den gelen tıklamaları yakalamak için slot
 
+    QObject *m_waypointModel = nullptr;
 
 };
 #endif // MAINWINDOW_H

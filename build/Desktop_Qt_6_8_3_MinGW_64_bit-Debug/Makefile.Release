@@ -1727,7 +1727,17 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QTableWidgetItem \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtablewidget.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtableview.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemview.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qitemselectionmodel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QMetaObject \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QVariantMap \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qvariantmap.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QMap \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/qrc_qml.o: release/qrc_qml.cpp 

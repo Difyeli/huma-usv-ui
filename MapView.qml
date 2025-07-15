@@ -4,6 +4,8 @@ import QtQuick.Controls 2.15
 import QtLocation 5.15
 import QtPositioning 5.15
 
+
+
 Item {
     id: root; width: parent.width; height: parent.height
 
@@ -13,9 +15,19 @@ Item {
     property real vehicleHeading: 0
 
     // Waypoint listesi
-    ListModel { id: waypointModel }
+    ListModel {
+            id: waypointModel
+            objectName: "waypointModel"
+        }
 
     Plugin { id: osmPlugin; name: "osm" }
+
+
+    function removeWaypointAt(index) {
+           // QML'in kendi remove metodu
+           waypointModel.remove(index)
+       }
+
 
     Map {
         id: map; anchors.fill: parent
@@ -63,6 +75,8 @@ Item {
                 }
             }
         }
+
+
     }
 
     // + / – zoom kontrolleri

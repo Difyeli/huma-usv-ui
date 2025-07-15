@@ -16,10 +16,12 @@
 #include <QtQuickWidgets/QQuickWidget>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFormLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -87,6 +89,7 @@ public:
     QLabel *PID_frame;
     QLabel *label_15;
     QQuickWidget *mapQuickWidget;
+    QTableWidget *questTable;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -460,12 +463,12 @@ public:
         Setpoint_txt->setFont(font2);
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(510, 90, 551, 321));
+        label_4->setGeometry(QRect(510, 90, 551, 341));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_4->setScaledContents(true);
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(40, 90, 461, 321));
+        label_6->setGeometry(QRect(20, 90, 481, 341));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
         label_6->setScaledContents(true);
         MapLabel = new QLabel(centralwidget);
@@ -607,7 +610,7 @@ public:
         connectButton->setFlat(true);
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(230, 90, 101, 31));
+        label_7->setGeometry(QRect(230, 95, 101, 31));
         QPalette palette7;
         palette7.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette7.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -758,7 +761,7 @@ public:
         label_11->setScaledContents(true);
         label_12 = new QLabel(centralwidget);
         label_12->setObjectName("label_12");
-        label_12->setGeometry(QRect(200, 90, 28, 28));
+        label_12->setGeometry(QRect(200, 98, 28, 28));
         label_12->setPixmap(QPixmap(QString::fromUtf8(":/images/QuestLogo.png")));
         label_12->setScaledContents(true);
         label_13 = new QLabel(centralwidget);
@@ -773,7 +776,7 @@ public:
         label_14->setScaledContents(true);
         PID_frame = new QLabel(centralwidget);
         PID_frame->setObjectName("PID_frame");
-        PID_frame->setGeometry(QRect(40, 439, 461, 331));
+        PID_frame->setGeometry(QRect(20, 439, 481, 331));
         PID_frame->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
         PID_frame->setScaledContents(true);
         label_15 = new QLabel(centralwidget);
@@ -790,8 +793,22 @@ public:
         label_15->setAlignment(Qt::AlignmentFlag::AlignCenter);
         mapQuickWidget = new QQuickWidget(centralwidget);
         mapQuickWidget->setObjectName("mapQuickWidget");
-        mapQuickWidget->setGeometry(QRect(540, 130, 491, 251));
+        mapQuickWidget->setGeometry(QRect(530, 130, 511, 281));
         mapQuickWidget->setResizeMode(QQuickWidget::ResizeMode::SizeRootObjectToView);
+        questTable = new QTableWidget(centralwidget);
+        if (questTable->columnCount() < 4)
+            questTable->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        questTable->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        questTable->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        questTable->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        questTable->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        questTable->setObjectName("questTable");
+        questTable->setGeometry(QRect(36, 130, 451, 281));
+        questTable->horizontalHeader()->setDefaultSectionSize(108);
         MainWindow->setCentralWidget(centralwidget);
         label_5->raise();
         PID_frame->raise();
@@ -818,6 +835,7 @@ public:
         label_13->raise();
         label_15->raise();
         mapQuickWidget->raise();
+        questTable->raise();
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
@@ -883,6 +901,14 @@ public:
         label_14->setText(QString());
         PID_frame->setText(QString());
         label_15->setText(QCoreApplication::translate("MainWindow", "PID Parameters", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = questTable->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "#", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = questTable->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Latitude", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = questTable->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Longitude", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = questTable->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Sil", nullptr));
     } // retranslateUi
 
 };

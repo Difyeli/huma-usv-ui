@@ -18,6 +18,11 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QLabel>
+#include <QTableWidgetItem>
+#include <QDebug>
+#include <QMetaObject>
+#include <QVariantMap>
+#include <QVariant>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -45,6 +50,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mapQuickWidget->setSource(QUrl(QStringLiteral("qrc:/MapView.qml")));
     if (ui->mapQuickWidget->status() != QQuickWidget::Ready)
         qWarning() << ui->mapQuickWidget->errors();
+
+
+    // mainwindow.cpp, QQuickWidget’i ayarladıktan sonra:
+    QObject *root = ui->mapQuickWidget->rootObject();
+    m_waypointModel = root->findChild<QObject*>("waypointModel");
+    if (!m_waypointModel)
+        qWarning() << "waypointModel bulunamadı!";
+
 
 
     // İlk durum
@@ -88,6 +101,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // Seri porttan veri okuma
     connect(serial, &QSerialPort::readyRead,
             this, &MainWindow::handleSerialData);
+
+    connect(this, &MainWindow::addWaypoint, this, &MainWindow::addWaypoint);
 }
 
 MainWindow::~MainWindow()
@@ -268,7 +283,112 @@ void MainWindow::showDataPoint(const QPointF &point, bool state)
 void MainWindow::addWaypoint(double lat, double lon) {
     qDebug() << "Yeni waypoint eklendi:" << lat << lon;
     // Burada ileride listeye de ekleyebilirsin, CSV’ye yazabilirsin...
+    auto *tbl = ui->questTable;
+    int row = tbl->rowCount();
+    tbl->insertRow(row);
+
+    // 1) Sıra numarası
+    auto *idxItem = new QTableWidgetItem(QString::number(row+1));
+    idxItem->setFlags(idxItem->flags() & ~Qt::ItemIsEditable);
+    tbl->setItem(row, 0, idxItem);
+
+    // 2) Latitude
+    tbl->setItem(row, 1,
+                 new QTableWidgetItem(QString::number(lat, 'f', 6)));
+
+    // 3) Longitude
+    tbl->setItem(row, 2,
+                 new QTableWidgetItem(QString::number(lon, 'f', 6)));
+
+    // 4) Sil butonu
+
+    QPushButton *del = new QPushButton("Sil");
+    ui->questTable->setCellWidget(row, 3, del);
+    connect(del, &QPushButton::clicked, this, &MainWindow::handleDeleteButton);
 }
+
+void MainWindow::handleDeleteButton()
+{
+    int row = ui->questTable->currentRow();
+    if (row < 0) return;
+
+    // 1) QML tarafındaki helper'ı çağır
+    QObject *root = ui->mapQuickWidget->rootObject();
+    if (root) {
+        // QML fonksiyon imzası QVariant aldığı için
+        QMetaObject::invokeMethod(
+            root,
+            "removeWaypointAt",
+            // ---- Burayı şu şekilde değiştir ----
+            Q_ARG(QVariant, QVariant(row))
+            );
+    }
+
+    // 2) Tablo satırını sil
+    ui->questTable->removeRow(row);
+
+    // 3) Kalan satırları yeniden numaralandır
+    for (int r = 0; r < ui->questTable->rowCount(); ++r) {
+        ui->questTable->item(r, 0)
+        ->setText(QString::number(r + 1));
+    }
+}
+
+
+
+void MainWindow::handleItemChanged(QTableWidgetItem *item)
+{
+    int row = item->row();
+    int col = item->column();
+    // sadece lat(1) veya lon(2) için
+    if (col!=1 && col!=2) return;
+
+    bool ok;
+    double lat = ui->questTable->item(row,1)->text().toDouble(&ok);
+    if (!ok) return;
+    double lon = ui->questTable->item(row,2)->text().toDouble(&ok);
+    if (!ok) return;
+    // model’de de güncelle
+    updateWaypointAt(row, lat, lon);
+}
+
+void MainWindow::removeWaypointAt(int index)
+{
+    QObject *root = ui->mapQuickWidget->rootObject();
+    if (!root) return;
+    QObject *model = root->findChild<QObject*>("waypointModel");
+    if (!model) {
+        qWarning() << "waypointModel bulunamadı!";
+        return;
+    }
+    // ListModel.remove(index, count=1)
+    QMetaObject::invokeMethod(model,
+                              "remove",
+                              Q_ARG(int, index),
+                              Q_ARG(int, 1)
+                              );
+}
+
+void MainWindow::updateWaypointAt(int index, double lat, double lon)
+{
+    QObject *root = ui->mapQuickWidget->rootObject();
+    if (!root) return;
+    QObject *model = root->findChild<QObject*>("waypointModel");
+    if (!model) {
+        qWarning() << "waypointModel bulunamadı!";
+        return;
+    }
+    QVariantMap props;
+    props.insert("lat", lat);
+    props.insert("lon", lon);
+    // ListModel.set(index, props)
+    QMetaObject::invokeMethod(model,
+                              "set",
+                              Q_ARG(int, index),
+                              Q_ARG(QVariant, props)
+                              );
+}
+
 
 void MainWindow::updateMapPosition(double latitude, double longitude)
 {
@@ -283,3 +403,4 @@ void MainWindow::updateMapHeading(double heading)
     if (auto r = ui->mapQuickWidget->rootObject())
         r->setProperty("vehicleHeading", heading);
 }
+
