@@ -1,5 +1,6 @@
 #include "connectionsettingsdialog.h"
 #include "ui_connectionsettingsdialog.h"
+#include <QtSerialPort/QSerialPortInfo>
 
 ConnectionSettingsDialog::ConnectionSettingsDialog(QWidget *parent) :
     QDialog(parent),
@@ -7,18 +8,16 @@ ConnectionSettingsDialog::ConnectionSettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // 1) Portları ekle: COM1..COM8
-    for (int i = 1; i <= 9; ++i)
-        ui->portComboBox->addItem(QString("COM%1").arg(i));
+    // --- Sadece mevcut portları listele ---
+    ui->portComboBox->clear();
+    const auto ports = QSerialPortInfo::availablePorts();
+    for (const QSerialPortInfo &info : ports) {
+        ui->portComboBox->addItem(info.portName());
+    }
 
-    // 2) Baud rate’leri ekle
-    const QList<qint32> bauds = {2400, 4800, 9600, 14400, 19200};
-    for (auto b : bauds)
-        ui->baudComboBox->addItem(QString::number(b), b);
-
-    // 3) Varsayılan seçimler
-    ui->portComboBox->setCurrentText("COM9");
-    ui->baudComboBox->setCurrentText("9600");
+    // İstersen baud rate listesini de böyle sabitle
+    ui->baudComboBox->clear();
+    ui->baudComboBox->addItems({ "2400", "4800", "9600", "19200", "38400", "57600", "115200" });
 }
 
 ConnectionSettingsDialog::~ConnectionSettingsDialog()
@@ -31,7 +30,7 @@ QString ConnectionSettingsDialog::portName() const
     return ui->portComboBox->currentText();
 }
 
-qint32 ConnectionSettingsDialog::baudRate() const
+int ConnectionSettingsDialog::baudRate() const
 {
-    return ui->baudComboBox->currentData().toInt();
+    return ui->baudComboBox->currentText().toInt();
 }

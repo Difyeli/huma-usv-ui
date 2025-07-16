@@ -119,6 +119,7 @@ public:
         buttonBox = new QDialogButtonBox(ConnectionSettingsDialog);
         buttonBox->setObjectName("buttonBox");
         buttonBox->setGeometry(QRect(10, 220, 351, 32));
+        buttonBox->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         buttonBox->setOrientation(Qt::Orientation::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
         formLayoutWidget = new QWidget(ConnectionSettingsDialog);
@@ -137,11 +138,13 @@ public:
 
         portComboBox = new QComboBox(formLayoutWidget);
         portComboBox->setObjectName("portComboBox");
+        portComboBox->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, portComboBox);
 
         baudComboBox = new QComboBox(formLayoutWidget);
         baudComboBox->setObjectName("baudComboBox");
+        baudComboBox->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, baudComboBox);
 

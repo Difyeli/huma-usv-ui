@@ -16,7 +16,7 @@ public:
     ~ConnectionSettingsDialog();
 
     QString portName() const;
-    qint32  baudRate() const;
+    int     baudRate() const;
 
 private:
     Ui::ConnectionSettingsDialog *ui;

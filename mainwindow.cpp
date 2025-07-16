@@ -169,29 +169,32 @@ void MainWindow::on_connectButton_clicked()
 void MainWindow::on_settingsButton_clicked()
 {
     ConnectionSettingsDialog dlg(this);
-    // mevcut değerleri dialoga yansıt
-    if (auto cb = dlg.findChild<QComboBox*>("portComboBox"))
-        cb->setCurrentText(currentPortName);
-    if (auto cb = dlg.findChild<QComboBox*>("baudComboBox"))
-        cb->setCurrentText(QString::number(currentBaudRate));
+
+    // Mevcut port listesini yeniden doldur
+    {
+        auto *cb = dlg.findChild<QComboBox*>("portComboBox");
+        if (cb) {
+            cb->clear();
+            for (const auto &info : QSerialPortInfo::availablePorts())
+                cb->addItem(info.portName());
+            // ve eski seçimi koru
+            cb->setCurrentText(currentPortName);
+        }
+    }
+
+    // Baud listesi zaten dialog ctor’da doluyor, burda sadece seçimi yansıt
+    {
+        auto *cb = dlg.findChild<QComboBox*>("baudComboBox");
+        if (cb)
+            cb->setCurrentText(QString::number(currentBaudRate));
+    }
 
     if (dlg.exec() == QDialog::Accepted) {
+        // Yeni ayarları al
         currentPortName = dlg.portName();
         currentBaudRate = dlg.baudRate();
         ui->portValueLabel->setText(currentPortName);
         ui->baudValueLabel->setText(QString::number(currentBaudRate));
-    }
-
-    QStringList ports;
-    for (const QSerialPortInfo &info : QSerialPortInfo::availablePorts()) {
-        ports << info.portName();
-        qDebug() << "Found serial port:" << info.portName();
-    }
-    if (ports.isEmpty()) {
-        qWarning() << "Hiç seri port bulunamadı!";
-    } else {
-        // defaults
-        currentPortName = ports.first();
     }
 }
 
