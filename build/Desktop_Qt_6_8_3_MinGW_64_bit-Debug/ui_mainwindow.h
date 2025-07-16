@@ -90,6 +90,8 @@ public:
     QLabel *label_15;
     QQuickWidget *mapQuickWidget;
     QTableWidget *questTable;
+    QPushButton *sendButton;
+    QPushButton *emergencyButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -191,7 +193,7 @@ public:
         centralwidget->setAutoFillBackground(true);
         formLayoutWidget = new QWidget(centralwidget);
         formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(1110, 150, 246, 402));
+        formLayoutWidget->setGeometry(QRect(1080, 150, 246, 402));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName("formLayout");
         formLayout->setHorizontalSpacing(67);
@@ -344,12 +346,12 @@ public:
 
         SpeedFrame = new QLabel(centralwidget);
         SpeedFrame->setObjectName("SpeedFrame");
-        SpeedFrame->setGeometry(QRect(510, 440, 551, 334));
+        SpeedFrame->setGeometry(QRect(500, 440, 551, 334));
         SpeedFrame->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         SpeedFrame->setScaledContents(true);
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(730, 450, 123, 28));
+        label->setGeometry(QRect(720, 450, 123, 28));
         QPalette palette1;
         QBrush brush9(QColor(45, 55, 72, 255));
         brush9.setStyle(Qt::SolidPattern);
@@ -366,7 +368,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         SpeedGraph = new QChartView(centralwidget);
         SpeedGraph->setObjectName("SpeedGraph");
-        SpeedGraph->setGeometry(QRect(520, 456, 531, 297));
+        SpeedGraph->setGeometry(QRect(510, 456, 531, 297));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -463,17 +465,17 @@ public:
         Setpoint_txt->setFont(font2);
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(510, 90, 551, 341));
+        label_4->setGeometry(QRect(500, 90, 551, 351));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_4->setScaledContents(true);
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(20, 90, 481, 341));
+        label_6->setGeometry(QRect(20, 90, 481, 351));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
         label_6->setScaledContents(true);
         MapLabel = new QLabel(centralwidget);
         MapLabel->setObjectName("MapLabel");
-        MapLabel->setGeometry(QRect(770, 100, 45, 28));
+        MapLabel->setGeometry(QRect(760, 100, 45, 28));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette5.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -483,7 +485,7 @@ public:
         MapLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
         formLayoutWidget_2 = new QWidget(centralwidget);
         formLayoutWidget_2->setObjectName("formLayoutWidget_2");
-        formLayoutWidget_2->setGeometry(QRect(1100, 590, 241, 191));
+        formLayoutWidget_2->setGeometry(QRect(1070, 590, 241, 191));
         formLayout_2 = new QFormLayout(formLayoutWidget_2);
         formLayout_2->setObjectName("formLayout_2");
         formLayout_2->setHorizontalSpacing(60);
@@ -530,7 +532,7 @@ public:
 
         connectButton = new QPushButton(centralwidget);
         connectButton->setObjectName("connectButton");
-        connectButton->setGeometry(QRect(1140, 690, 180, 30));
+        connectButton->setGeometry(QRect(1100, 690, 180, 30));
         QPalette palette6;
         palette6.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette6.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -620,7 +622,7 @@ public:
         label_7->setAlignment(Qt::AlignmentFlag::AlignCenter);
         settingsButton = new QPushButton(centralwidget);
         settingsButton->setObjectName("settingsButton");
-        settingsButton->setGeometry(QRect(1140, 726, 180, 30));
+        settingsButton->setGeometry(QRect(1100, 726, 180, 30));
         QPalette palette8;
         palette8.setBrush(QPalette::Active, QPalette::WindowText, brush);
         QBrush brush15(QColor(16, 191, 255, 255));
@@ -712,27 +714,27 @@ public:
         settingsButton->setFlat(true);
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(1080, 540, 281, 231));
+        label_3->setGeometry(QRect(1050, 540, 281, 231));
         label_3->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_3->setScaledContents(true);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(1080, 90, 281, 441));
+        label_2->setGeometry(QRect(1050, 90, 281, 441));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/images/Background1.png")));
         label_2->setScaledContents(true);
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(-10, 0, 1540, 900));
+        label_5->setGeometry(QRect(0, 0, 1540, 900));
         label_5->setPixmap(QPixmap(QString::fromUtf8(":/images/GrayBG.png")));
         label_5->setScaledContents(true);
         ConnectionLogo = new QLabel(centralwidget);
         ConnectionLogo->setObjectName("ConnectionLogo");
-        ConnectionLogo->setGeometry(QRect(1160, 550, 28, 28));
+        ConnectionLogo->setGeometry(QRect(1120, 550, 28, 28));
         ConnectionLogo->setPixmap(QPixmap(QString::fromUtf8(":/images/ConnectionLogo.png")));
         ConnectionLogo->setScaledContents(true);
         label_9 = new QLabel(centralwidget);
         label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(1180, 554, 111, 20));
+        label_9->setGeometry(QRect(1140, 554, 111, 20));
         QPalette palette9;
         palette9.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette9.setBrush(QPalette::Active, QPalette::Text, brush9);
@@ -743,12 +745,12 @@ public:
         label_9->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName("label_8");
-        label_8->setGeometry(QRect(710, 450, 28, 28));
+        label_8->setGeometry(QRect(700, 450, 28, 28));
         label_8->setPixmap(QPixmap(QString::fromUtf8(":/images/SpeedLogo.png")));
         label_8->setScaledContents(true);
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(1190, 100, 96, 29));
+        label_10->setGeometry(QRect(1170, 100, 96, 29));
         QPalette palette10;
         palette10.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette10.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -756,7 +758,7 @@ public:
         label_10->setFont(font1);
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName("label_11");
-        label_11->setGeometry(QRect(740, 100, 28, 28));
+        label_11->setGeometry(QRect(730, 100, 28, 28));
         label_11->setPixmap(QPixmap(QString::fromUtf8(":/images/MapLogo.png")));
         label_11->setScaledContents(true);
         label_12 = new QLabel(centralwidget);
@@ -766,12 +768,12 @@ public:
         label_12->setScaledContents(true);
         label_13 = new QLabel(centralwidget);
         label_13->setObjectName("label_13");
-        label_13->setGeometry(QRect(1160, 100, 28, 28));
+        label_13->setGeometry(QRect(1140, 100, 28, 28));
         label_13->setPixmap(QPixmap(QString::fromUtf8(":/images/TelemetryLogo.png")));
         label_13->setScaledContents(true);
         label_14 = new QLabel(centralwidget);
         label_14->setObjectName("label_14");
-        label_14->setGeometry(QRect(1100, 140, 241, 373));
+        label_14->setGeometry(QRect(1070, 140, 241, 373));
         label_14->setPixmap(QPixmap(QString::fromUtf8(":/images/Background4.png")));
         label_14->setScaledContents(true);
         PID_frame = new QLabel(centralwidget);
@@ -793,7 +795,8 @@ public:
         label_15->setAlignment(Qt::AlignmentFlag::AlignCenter);
         mapQuickWidget = new QQuickWidget(centralwidget);
         mapQuickWidget->setObjectName("mapQuickWidget");
-        mapQuickWidget->setGeometry(QRect(530, 130, 511, 281));
+        mapQuickWidget->setGeometry(QRect(520, 130, 511, 291));
+        mapQuickWidget->setCursor(QCursor(Qt::CursorShape::CrossCursor));
         mapQuickWidget->setResizeMode(QQuickWidget::ResizeMode::SizeRootObjectToView);
         questTable = new QTableWidget(centralwidget);
         if (questTable->columnCount() < 4)
@@ -807,8 +810,20 @@ public:
         QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
         questTable->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         questTable->setObjectName("questTable");
-        questTable->setGeometry(QRect(36, 130, 451, 281));
+        questTable->setGeometry(QRect(36, 130, 451, 261));
         questTable->horizontalHeader()->setDefaultSectionSize(108);
+        sendButton = new QPushButton(centralwidget);
+        sendButton->setObjectName("sendButton");
+        sendButton->setGeometry(QRect(200, 395, 131, 29));
+        emergencyButton = new QPushButton(centralwidget);
+        emergencyButton->setObjectName("emergencyButton");
+        emergencyButton->setGeometry(QRect(1340, 20, 181, 51));
+        emergencyButton->setCursor(QCursor(Qt::CursorShape::OpenHandCursor));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/images/EmergencyButton.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        emergencyButton->setIcon(icon2);
+        emergencyButton->setIconSize(QSize(200, 33));
+        emergencyButton->setFlat(true);
         MainWindow->setCentralWidget(centralwidget);
         label_5->raise();
         PID_frame->raise();
@@ -836,6 +851,8 @@ public:
         label_15->raise();
         mapQuickWidget->raise();
         questTable->raise();
+        sendButton->raise();
+        emergencyButton->raise();
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
@@ -909,6 +926,8 @@ public:
         ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Longitude", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = questTable->horizontalHeaderItem(3);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Sil", nullptr));
+        sendButton->setText(QCoreApplication::translate("MainWindow", "SEND", nullptr));
+        emergencyButton->setText(QString());
     } // retranslateUi
 
 };

@@ -144,6 +144,7 @@ release/qrc_resources.cpp: ../../resources.qrc \
 		../../images/MapLogo.png \
 		../../images/TelemetryLogo.png \
 		../../images/WhiteBG.png \
+		../../images/EmergencyButton.png \
 		../../images/GraphSquare.png \
 		../../images/Background4.png \
 		../../images/GrayBG.png \
@@ -1094,7 +1095,41 @@ release/connectionsettingsdialog.o: ../../connectionsettingsdialog.cpp ../../con
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qinputmethod.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qlocale.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qguiapplication_platform.h \
-		ui_connectionsettingsdialog.h
+		ui_connectionsettingsdialog.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QVariant \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QAbstractButton \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QApplication \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qapplication.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QComboBox \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qcombobox.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstyleoption.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qvalidator.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qregularexpression.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qslider.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractslider.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstyle.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtabbar.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtabwidget.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialogButtonBox \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFormLayout \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qformlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLayout \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\connectionsettingsdialog.o ..\..\connectionsettingsdialog.cpp
 
 release/main.o: ../../main.cpp ../../mainwindow.h \
@@ -1673,9 +1708,6 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QDateTime \
 		ui_mainwindow.h \
-		../../connectionsettingsdialog.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialog \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialog.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/QChartView \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/qchartview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/QChart \
@@ -1693,8 +1725,22 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QComboBox \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qcombobox.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QAction \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QIcon \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QApplication \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qapplication.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFormLayout \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qformlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLayout \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayoutitem.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QHeaderView \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qheaderview.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemview.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qitemselectionmodel.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstyleoption.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractspinbox.h \
@@ -1705,7 +1751,24 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstyle.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtabbar.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qrubberband.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qabstractitemmodel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPushButton \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qpushbutton.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QStatusBar \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qstatusbar.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QTableWidget \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtablewidget.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtableview.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QWidget \
+		../../connectionsettingsdialog.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialog \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialog.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QComboBox \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qcombobox.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtQuick/QQuickItem \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtQuick/qquickitem.h \
@@ -1715,29 +1778,18 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLineEdit \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlineedit.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextcursor.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextformat.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPushButton \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qpushbutton.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QHBoxLayout \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qboxlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlayoutitem.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLabel \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QTableWidgetItem \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtablewidget.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtableview.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractitemview.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qitemselectionmodel.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QMetaObject \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QVariantMap \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qvariantmap.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QMap \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QString
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QString \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QMessageBox \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QThread
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/qrc_qml.o: release/qrc_qml.cpp 

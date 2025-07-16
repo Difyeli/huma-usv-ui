@@ -23,6 +23,8 @@
 #include <QMetaObject>
 #include <QVariantMap>
 #include <QVariant>
+#include <QMessageBox>
+#include <QThread>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -94,15 +96,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(actualSeries, &QXYSeries::hovered,
             this, &MainWindow::showDataPoint);
 
-    // Ayarlar diyalog açma
-    connect(ui->settingsButton, &QPushButton::clicked,
-            this, &MainWindow::on_settingsButton_clicked);
+
 
     // Seri porttan veri okuma
     connect(serial, &QSerialPort::readyRead,
             this, &MainWindow::handleSerialData);
 
     connect(this, &MainWindow::addWaypoint, this, &MainWindow::addWaypoint);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -130,7 +132,7 @@ void MainWindow::on_connectButton_clicked()
         serial->setParity(QSerialPort::NoParity);
         serial->setStopBits(QSerialPort::OneStop);
 
-        if (serial->open(QIODevice::ReadOnly)) {
+        if (serial->open(QIODevice::ReadWrite)) {
             ui->statusValueLabel->setText("Aktif");
             ui->portValueLabel->setText(currentPortName);
             ui->baudValueLabel->setText(QString::number(currentBaudRate));
@@ -193,6 +195,79 @@ void MainWindow::on_settingsButton_clicked()
     }
 }
 
+void MainWindow::on_sendButton_clicked()
+{
+    if (!serial->isOpen()) {
+        QMessageBox::warning(this, tr("Gönderilemedi"),
+                             tr("Önce Bağlan butonuna basarak seri portu açmalısınız."));
+        return;
+    }
+
+    auto *tbl = ui->questTable;
+    int rows = tbl->rowCount();
+    if (rows == 0) {
+        QMessageBox::information(this, tr("Gönderildi"),
+                                 tr("Gönderecek waypoint yok."));
+        return;
+    }
+
+    // 1) lat,lon çiftlerini topla
+    QStringList pairs;
+    for (int r = 0; r < rows; ++r) {
+        QString lat = tbl->item(r, 1)->text();
+        QString lon = tbl->item(r, 2)->text();
+        pairs << QString("%1,%2").arg(lat, lon);
+    }
+    // "/" ile birleştir, sonuna newline ekle
+    QByteArray packet = pairs.join('/').toUtf8() + '\n';
+
+    // 2) Yaz ve kontrol et
+    qint64 written = serial->write(packet);
+    if (written != packet.size()) {
+        QMessageBox::critical(this, tr("Hata"),
+                              tr("Waypoint verisi gönderilirken hata oluştu:\n%1")
+                                  .arg(serial->errorString()));
+        return;
+    }
+
+    serial->flush();
+    QThread::msleep(10);
+
+    qDebug() << "[SEND-ALL]" << packet.trimmed();
+
+    QMessageBox::information(this, tr("Gönderildi"),
+                             tr("%1 waypoint verisi gönderildi.").arg(rows));
+}
+
+void MainWindow::on_emergencyButton_clicked()
+{
+    // Seri portun bağlı olup olmadığını kontrol edin
+    if (!serial->isOpen()) {
+        QMessageBox::warning(this,
+                             tr("Acil Durdurma"),
+                             tr("Lütfen önce bağlantıyı açın!"));
+        return;
+    }
+
+    // Gönderilecek durdurma komutu
+    // (Aracınızın protokolüne göre düzenleyin)
+    const QByteArray stopCmd = "STOP\n";
+
+    qint64 bytes = serial->write(stopCmd);
+    if (bytes == stopCmd.size()) {
+        QMessageBox::information(this,
+                                 tr("Acil Durdurma"),
+                                 tr("Acil durdurma komutu gönderildi."));
+        ui->statusValueLabel->setText(tr("DURDURULDU"));
+    } else {
+        QMessageBox::critical(this,
+                              tr("Acil Durdurma Hatası"),
+                              tr("Komut gönderilemedi:\n%1")
+                                  .arg(serial->errorString()));
+    }
+}
+
+
 void MainWindow::handleSerialData()
 {
     static QByteArray buffer;
@@ -240,10 +315,29 @@ void MainWindow::handleSerialData()
 
 
         // grafiğe ekle
-        setPointSeries->append(elapsedTime, setPoint);
         actualSeries->append(elapsedTime, currentSpeed);
         elapsedTime += 1.0;
         axisX->setRange(0, elapsedTime);
+
+        // --- Sliding window ekseni ayarı ---
+        // pencere başı = elapsedTime - windowDuration, ama negatif olmasın
+        qreal t0 = qMax<qreal>(0.0, elapsedTime - windowDuration);
+        // ekseni [t0, t0+windowDuration] aralığında göster
+        axisX->setRange(t0, t0 + windowDuration);
+
+        // çok eski noktaları at (performans için)
+        auto trim = [t0](QSplineSeries* s){
+            // points() vektörünün ilk noktasının x()<t0 olduğu sürece sil
+            while (!s->points().isEmpty() && s->points().first().x() < t0) {
+                s->removePoints(0, 1);
+            }
+        };
+
+        trim(actualSeries);
+
+        setPointSeries->clear();
+        setPointSeries->append(t0,              setPoint);
+        setPointSeries->append(t0 + windowDuration, setPoint);
 
         // CSV kaydına yaz
         if (recording && csvStream) {

@@ -23,5 +23,6 @@
         <file>images/ConnectButton.png</file>
         <file>images/DisconnectButton.png</file>
         <file>images/SettingsButton.png</file>
+        <file>images/EmergencyButton.png</file>
     </qresource>
 </RCC>

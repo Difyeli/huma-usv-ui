@@ -38,11 +38,14 @@ public:
 
 private slots:
     void handleSerialData();
-    void on_connectButton_clicked();
     void showDataPoint(const QPointF &point, bool state);
     void on_settingsButton_clicked();
+    void on_sendButton_clicked();
+    void on_emergencyButton_clicked();
+    void on_connectButton_clicked();
     void handleDeleteButton();
     void handleItemChanged(QTableWidgetItem *item);
+
 signals:
     void telemetryReceived(const QByteArray &data);
     void connectionStatusChanged(bool);
@@ -73,6 +76,9 @@ private:
     // QML’den gelen tıklamaları yakalamak için slot
 
     QObject *m_waypointModel = nullptr;
+
+
+    const qreal    windowDuration = 30.0;
 
 };
 #endif // MAINWINDOW_H
