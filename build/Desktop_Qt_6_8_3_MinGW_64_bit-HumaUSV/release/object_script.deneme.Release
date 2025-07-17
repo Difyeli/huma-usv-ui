@@ -1,0 +1,10 @@
+release/connectionsettingsdialog.o
+release/main.o
+release/mainwindow.o
+release/MapView_qml.o
+release/qmlcache_loader.o
+release/qrc_qml_qmlcache.o
+release/qrc_resources.o
+release/qrc_qmake_qmake_qm_files.o
+release/moc_connectionsettingsdialog.o
+release/moc_mainwindow.o

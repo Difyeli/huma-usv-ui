@@ -10,9 +10,9 @@ MAKEFILE      = Makefile
 
 EQ            = =
 
-first: debug
-install: debug-install
-uninstall: debug-uninstall
+first: release
+install: release-install
+uninstall: release-uninstall
 QMAKE         = D:\Qt\6.8.3\mingw_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -37,24 +37,10 @@ RES_FILE      =
 SED           = $(QMAKE) -install sed
 MOVE          = move
 SUBTARGETS    =  \
-		debug \
-		release
+		release \
+		debug
 
 
-debug: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug
-debug-make_first: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug 
-debug-all: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug all
-debug-clean: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug clean
-debug-distclean: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug distclean
-debug-install: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug install
-debug-uninstall: FORCE
-	$(MAKE) -f $(MAKEFILE).Debug uninstall
 release: FORCE
 	$(MAKE) -f $(MAKEFILE).Release
 release-make_first: FORCE
@@ -69,6 +55,20 @@ release-install: FORCE
 	$(MAKE) -f $(MAKEFILE).Release install
 release-uninstall: FORCE
 	$(MAKE) -f $(MAKEFILE).Release uninstall
+debug: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug
+debug-make_first: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug 
+debug-all: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug all
+debug-clean: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug clean
+debug-distclean: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug distclean
+debug-install: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug install
+debug-uninstall: FORCE
+	$(MAKE) -f $(MAKEFILE).Debug uninstall
 
 Makefile: ../../deneme.pro ../../../../Qt/6.8.3/mingw_64/mkspecs/win32-g++/qmake.conf ../../../../Qt/6.8.3/mingw_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.8.3/mingw_64/mkspecs/features/device_config.prf \
@@ -456,8 +456,8 @@ Makefile: ../../deneme.pro ../../../../Qt/6.8.3/mingw_64/mkspecs/win32-g++/qmake
 		../../../../Qt/6.8.3/mingw_64/mkspecs/features/build_pass.prf \
 		../../qml.qrc \
 		../../resources.qrc \
-		debug/qmake_qmake_qm_files.qrc \
-		release/qmake_qmake_qm_files.qrc
+		release/qmake_qmake_qm_files.qrc \
+		debug/qmake_qmake_qm_files.qrc
 	$(QMAKE) -o Makefile ..\..\deneme.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 ../../../../Qt/6.8.3/mingw_64/mkspecs/features/spec_pre.prf:
 ../../../../Qt/6.8.3/mingw_64/mkspecs/features/device_config.prf:
@@ -845,31 +845,31 @@ Makefile: ../../deneme.pro ../../../../Qt/6.8.3/mingw_64/mkspecs/win32-g++/qmake
 ../../../../Qt/6.8.3/mingw_64/mkspecs/features/build_pass.prf:
 ../../qml.qrc:
 ../../resources.qrc:
-debug/qmake_qmake_qm_files.qrc:
 release/qmake_qmake_qm_files.qrc:
+debug/qmake_qmake_qm_files.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\deneme.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 
 qmake_all: FORCE
 
-make_first: debug-make_first release-make_first  FORCE
-all: debug-all release-all  FORCE
-clean: debug-clean release-clean  FORCE
-distclean: debug-distclean release-distclean  FORCE
+make_first: release-make_first debug-make_first  FORCE
+all: release-all debug-all  FORCE
+clean: release-clean debug-clean  FORCE
+distclean: release-distclean debug-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
 
-debug-mocclean:
-	$(MAKE) -f $(MAKEFILE).Debug mocclean
 release-mocclean:
 	$(MAKE) -f $(MAKEFILE).Release mocclean
-mocclean: debug-mocclean release-mocclean
+debug-mocclean:
+	$(MAKE) -f $(MAKEFILE).Debug mocclean
+mocclean: release-mocclean debug-mocclean
 
-debug-mocables:
-	$(MAKE) -f $(MAKEFILE).Debug mocables
 release-mocables:
 	$(MAKE) -f $(MAKEFILE).Release mocables
-mocables: debug-mocables release-mocables
+debug-mocables:
+	$(MAKE) -f $(MAKEFILE).Debug mocables
+mocables: release-mocables debug-mocables
 
 check: first
 
@@ -878,5 +878,5 @@ FORCE:
 
 .SUFFIXES:
 
-$(MAKEFILE).Debug: Makefile
 $(MAKEFILE).Release: Makefile
+$(MAKEFILE).Debug: Makefile

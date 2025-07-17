@@ -96,6 +96,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(actualSeries, &QXYSeries::hovered,
             this, &MainWindow::showDataPoint);
 
+    connect(ui->sendButton, &QPushButton::clicked,
+            this, &MainWindow::on_sendParamButton_clicked);
 
 
     // Seri porttan veri okuma
@@ -125,17 +127,19 @@ MainWindow::~MainWindow()
 void MainWindow::on_connectButton_clicked()
 {
     if (!serial->isOpen()) {
-        // Seri ayarları
+        // 1) Seçilen port ve baud‑rate’i uygula
         serial->setPortName(currentPortName);
-        serial->setBaudRate(currentBaudRate);
+        // QSerialPort::setBaudRate(int) overload’u var, ama enum kullanmak daha güvenli:
+        serial->setBaudRate(static_cast<QSerialPort::BaudRate>(currentBaudRate));
         serial->setDataBits(QSerialPort::Data8);
-        serial->setParity(QSerialPort::NoParity);
+        serial->setParity  (QSerialPort::NoParity);
         serial->setStopBits(QSerialPort::OneStop);
 
         if (serial->open(QIODevice::ReadWrite)) {
             ui->statusValueLabel->setText("Aktif");
             ui->portValueLabel->setText(currentPortName);
             ui->baudValueLabel->setText(QString::number(currentBaudRate));
+
 
             // CSV dosyasını aç ve başlık satırını yaz
             QString fileName = QDateTime::currentDateTime()
@@ -148,8 +152,12 @@ void MainWindow::on_connectButton_clicked()
                 recording = true;
             }
         } else {
+            // Eğer açılmazsa kısa bir hata mesajı
+            QMessageBox::critical(this, "Bağlantı Hatası",
+                                  QString("“%1” portu açılamadı!").arg(currentPortName));
             ui->statusValueLabel->setText("Hata");
         }
+
     } else {
         // CSV kaydını sonlandır
         if (recording) {
@@ -201,45 +209,101 @@ void MainWindow::on_settingsButton_clicked()
 void MainWindow::on_sendButton_clicked()
 {
     if (!serial->isOpen()) {
-        QMessageBox::warning(this, tr("Gönderilemedi"),
-                             tr("Önce Bağlan butonuna basarak seri portu açmalısınız."));
+        QMessageBox::warning(this, "Gönderilemedi",
+                             "Önce Bağlan butonuna basarak seri portu açmalısınız.");
         return;
     }
 
     auto *tbl = ui->questTable;
     int rows = tbl->rowCount();
     if (rows == 0) {
-        QMessageBox::information(this, tr("Gönderildi"),
-                                 tr("Gönderecek waypoint yok."));
+        QMessageBox::information(this, "Gönder", "Gönderecek waypoint yok.");
         return;
     }
 
-    // 1) lat,lon çiftlerini topla
+    // Her satır için "lat,lon" çiftini oluşturup listeye ekleyelim
     QStringList pairs;
     for (int r = 0; r < rows; ++r) {
-        QString lat = tbl->item(r, 1)->text();
-        QString lon = tbl->item(r, 2)->text();
+        // 0. sütun = Latitude, 1. sütun = Longitude
+        QString lat = tbl->item(r, 0)->text().trimmed();
+        QString lon = tbl->item(r, 1)->text().trimmed();
+        if (lat.isEmpty() || lon.isEmpty())
+            continue;
         pairs << QString("%1,%2").arg(lat, lon);
     }
-    // "/" ile birleştir, sonuna newline ekle
-    QByteArray packet = pairs.join('/').toUtf8() + '\n';
 
-    // 2) Yaz ve kontrol et
-    qint64 written = serial->write(packet);
-    if (written != packet.size()) {
-        QMessageBox::critical(this, tr("Hata"),
-                              tr("Waypoint verisi gönderilirken hata oluştu:\n%1")
-                                  .arg(serial->errorString()));
+    if (pairs.isEmpty()) {
+        QMessageBox::information(this, "Gönder", "Geçerli bir latitude/longitude çifti yok.");
         return;
     }
 
-    serial->flush();
-    QThread::msleep(10);
+    // Başına "$", satırları ";" ile ayır, sonuna "\n"
+    QString payload = "$" + pairs.join(';');
+    QByteArray packet = payload.toUtf8() + '\n';
 
-    qDebug() << "[SEND-ALL]" << packet.trimmed();
+    qint64 written = serial->write(packet);
+    if (written != packet.size()) {
+        QMessageBox::critical(this, "Hata",
+                              "Waypoint paketi gönderilirken hata oluştu.");
+    } else {
+        qDebug() << "[SEND] Paket gönderildi:" << packet.trimmed();
+        QMessageBox::information(this, "Gönderildi",
+                                 QString("%1 waypoint içeren paket gönderildi.").arg(pairs.size()));
+    }
+}
 
-    QMessageBox::information(this, tr("Gönderildi"),
-                             tr("%1 waypoint verisi gönderildi.").arg(rows));
+void MainWindow::on_sendParamButton_clicked()
+{
+    // 1) Önce portun açık olup olmadığını kontrol edelim
+    if (!serial->isOpen()) {
+        QMessageBox::warning(this, "Gönderilemedi",
+                             "Önce Bağlan butonuna basarak seri portu açmalısınız.");
+        return;
+    }
+
+    auto *tbl = ui->parametersTable;     // Qt Designer'daki QTableWidget nesneniz
+    int rows = tbl->rowCount();
+    int cols = tbl->columnCount();
+
+    // 2) Her satır için boş olmayan hücreleri bir araya toplayalım
+    QStringList rowStrings;
+    for (int r = 0; r < rows; ++r) {
+        QStringList values;
+        for (int c = 0; c < cols; ++c) {
+            QTableWidgetItem *it = tbl->item(r, c);
+            if (it) {
+                QString txt = it->text().trimmed();
+                if (!txt.isEmpty())
+                    values << txt;
+            }
+        }
+        if (!values.isEmpty()) {
+            // Virgülle birleştir, örn. "12.34" tek sütun için,
+            // birden fazla sütun varsa "val1,val2,..." olur.
+            rowStrings << values.join(',');
+        }
+    }
+
+    if (rowStrings.isEmpty()) {
+        QMessageBox::information(this, "Gönder", "Gönderecek parametre yok.");
+        return;
+    }
+
+    // 3) Başına '*' ekle, satırları ';' ile ayır, sonuna '\n'
+    QString payload = "*" + rowStrings.join(';');
+    QByteArray packet = payload.toUtf8() + '\n';
+
+    // 4) Seri porta yaz
+    qint64 written = serial->write(packet);
+    if (written != packet.size()) {
+        QMessageBox::critical(this, "Hata",
+                              "Parametre paketi gönderilirken hata oluştu.");
+    } else {
+        qDebug() << "[SEND PARAM]" << packet.trimmed();
+        QMessageBox::information(this, "Gönderildi",
+                                 QString("%1 parametre satırı içeren paket gönderildi.")
+                                     .arg(rowStrings.size()));
+    }
 }
 
 void MainWindow::on_emergencyButton_clicked()
@@ -281,7 +345,7 @@ void MainWindow::handleSerialData()
         QByteArray line = buffer.left(idx).trimmed();
         buffer.remove(0, idx + 1);
 
-        auto parts = line.split(',');
+        auto parts = line.split(';');
         if (parts.size() < 11) continue;
 
         // parse telemetry
@@ -387,20 +451,19 @@ void MainWindow::addWaypoint(double lat, double lon) {
     // 1) Sıra numarası
     auto *idxItem = new QTableWidgetItem(QString::number(row+1));
     idxItem->setFlags(idxItem->flags() & ~Qt::ItemIsEditable);
-    tbl->setItem(row, 0, idxItem);
 
     // 2) Latitude
-    tbl->setItem(row, 1,
+    tbl->setItem(row, 0,
                  new QTableWidgetItem(QString::number(lat, 'f', 6)));
 
     // 3) Longitude
-    tbl->setItem(row, 2,
+    tbl->setItem(row, 1,
                  new QTableWidgetItem(QString::number(lon, 'f', 6)));
 
     // 4) Sil butonu
 
     QPushButton *del = new QPushButton("Sil");
-    ui->questTable->setCellWidget(row, 3, del);
+    ui->questTable->setCellWidget(row, 2, del);
     connect(del, &QPushButton::clicked, this, &MainWindow::handleDeleteButton);
 }
 
@@ -438,12 +501,12 @@ void MainWindow::handleItemChanged(QTableWidgetItem *item)
     int row = item->row();
     int col = item->column();
     // sadece lat(1) veya lon(2) için
-    if (col!=1 && col!=2) return;
+    if (col!=0 && col!=1) return;
 
     bool ok;
-    double lat = ui->questTable->item(row,1)->text().toDouble(&ok);
+    double lat = ui->questTable->item(row,0)->text().toDouble(&ok);
     if (!ok) return;
-    double lon = ui->questTable->item(row,2)->text().toDouble(&ok);
+    double lon = ui->questTable->item(row,1)->text().toDouble(&ok);
     if (!ok) return;
     // model’de de güncelle
     updateWaypointAt(row, lat, lon);

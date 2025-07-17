@@ -43,6 +43,7 @@ private slots:
     void on_sendButton_clicked();
     void on_emergencyButton_clicked();
     void on_connectButton_clicked();
+    void on_sendParamButton_clicked();
     void handleDeleteButton();
     void handleItemChanged(QTableWidgetItem *item);
 

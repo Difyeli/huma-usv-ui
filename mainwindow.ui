@@ -495,10 +495,10 @@
    <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>1030</x>
+      <x>930</x>
       <y>150</y>
-      <width>246</width>
-      <height>402</height>
+      <width>221</width>
+      <height>401</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -531,7 +531,7 @@
         <string>0.01 °</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -558,7 +558,7 @@
         <string>0.01 °</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -585,7 +585,7 @@
         <string>0.01 °</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -612,7 +612,7 @@
         <string>0.01 °</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -639,7 +639,7 @@
         <string>0.01 </string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -666,7 +666,19 @@
         <string>0.01 </string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="Voltage">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Bat. Voltage:</string>
        </property>
       </widget>
      </item>
@@ -681,7 +693,7 @@
         <string>12.6 V</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -708,7 +720,7 @@
         <string>22.7 °C</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -735,7 +747,7 @@
         <string>1</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -762,7 +774,7 @@
         <string>0.0 m/s</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -789,19 +801,7 @@
         <string>0.0 m/s</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="Voltage">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Bat. Voltage:</string>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -810,7 +810,7 @@
    <widget class="QLabel" name="SpeedFrame">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>350</x>
       <y>440</y>
       <width>551</width>
       <height>334</height>
@@ -829,7 +829,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>670</x>
+      <x>570</x>
       <y>450</y>
       <width>123</width>
       <height>28</height>
@@ -899,7 +899,7 @@
    <widget class="QChartView" name="SpeedGraph" native="true">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>360</x>
       <y>456</y>
       <width>531</width>
       <height>297</height>
@@ -1470,7 +1470,7 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>350</x>
       <y>90</y>
       <width>551</width>
       <height>351</height>
@@ -1491,7 +1491,7 @@
      <rect>
       <x>20</x>
       <y>90</y>
-      <width>431</width>
+      <width>331</width>
       <height>351</height>
      </rect>
     </property>
@@ -1508,7 +1508,7 @@
    <widget class="QLabel" name="MapLabel">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>610</x>
       <y>100</y>
       <width>45</width>
       <height>28</height>
@@ -1560,10 +1560,10 @@
    <widget class="QWidget" name="formLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>1020</x>
-      <y>590</y>
-      <width>241</width>
-      <height>191</height>
+      <x>1200</x>
+      <y>144</y>
+      <width>221</width>
+      <height>121</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
@@ -1659,8 +1659,8 @@
    <widget class="QPushButton" name="connectButton">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>690</y>
+      <x>1220</x>
+      <y>244</y>
       <width>180</width>
       <height>30</height>
      </rect>
@@ -2171,7 +2171,7 @@
    <widget class="QLabel" name="label_7">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>140</x>
       <y>95</y>
       <width>101</width>
       <height>31</height>
@@ -2223,8 +2223,8 @@
    <widget class="QPushButton" name="settingsButton">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>726</y>
+      <x>1220</x>
+      <y>280</y>
       <width>180</width>
       <height>30</height>
      </rect>
@@ -2729,8 +2729,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>1000</x>
-      <y>540</y>
+      <x>1170</x>
+      <y>90</y>
       <width>281</width>
       <height>231</height>
      </rect>
@@ -2748,10 +2748,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>1000</x>
+      <x>900</x>
       <y>90</y>
-      <width>281</width>
-      <height>441</height>
+      <width>271</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="text">
@@ -2786,8 +2786,8 @@
    <widget class="QLabel" name="ConnectionLogo">
     <property name="geometry">
      <rect>
-      <x>1070</x>
-      <y>550</y>
+      <x>1240</x>
+      <y>104</y>
       <width>28</width>
       <height>28</height>
      </rect>
@@ -2805,8 +2805,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>1090</x>
-      <y>554</y>
+      <x>1260</x>
+      <y>110</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -2872,7 +2872,7 @@
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>550</x>
       <y>450</y>
       <width>28</width>
       <height>28</height>
@@ -2891,7 +2891,7 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>1120</x>
+      <x>1000</x>
       <y>100</y>
       <width>96</width>
       <height>29</height>
@@ -2937,7 +2937,7 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>580</x>
       <y>100</y>
       <width>28</width>
       <height>28</height>
@@ -2956,7 +2956,7 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>110</x>
       <y>98</y>
       <width>28</width>
       <height>28</height>
@@ -2975,7 +2975,7 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>1090</x>
+      <x>970</x>
       <y>100</y>
       <width>28</width>
       <height>28</height>
@@ -2994,9 +2994,9 @@
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>1020</x>
-      <y>140</y>
-      <width>241</width>
+      <x>912</x>
+      <y>133</y>
+      <width>246</width>
       <height>373</height>
      </rect>
     </property>
@@ -3015,7 +3015,7 @@
      <rect>
       <x>20</x>
       <y>439</y>
-      <width>431</width>
+      <width>331</width>
       <height>331</height>
      </rect>
     </property>
@@ -3032,8 +3032,8 @@
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>450</y>
+      <x>110</x>
+      <y>440</y>
       <width>151</width>
       <height>28</height>
      </rect>
@@ -3090,7 +3090,7 @@
      </font>
     </property>
     <property name="text">
-     <string>PID Parameters</string>
+     <string>Parameters</string>
     </property>
     <property name="textFormat">
      <enum>Qt::TextFormat::RichText</enum>
@@ -3102,7 +3102,7 @@
    <widget class="QQuickWidget" name="mapQuickWidget">
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>370</x>
       <y>130</y>
       <width>511</width>
       <height>291</height>
@@ -3118,9 +3118,9 @@
    <widget class="QTableWidget" name="questTable">
     <property name="geometry">
      <rect>
-      <x>36</x>
+      <x>35</x>
       <y>130</y>
-      <width>401</width>
+      <width>301</width>
       <height>261</height>
      </rect>
     </property>
@@ -3252,26 +3252,8 @@
      <number>92</number>
     </attribute>
     <attribute name="horizontalHeaderStretchLastSection">
-     <bool>true</bool>
+     <bool>false</bool>
     </attribute>
-    <column>
-     <property name="text">
-      <string>#</string>
-     </property>
-     <property name="font">
-      <font>
-       <italic>true</italic>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="background">
-      <color>
-       <red>113</red>
-       <green>226</green>
-       <blue>217</blue>
-      </color>
-     </property>
-    </column>
     <column>
      <property name="text">
       <string>Latitude</string>
@@ -3330,7 +3312,7 @@
    <widget class="QPushButton" name="sendButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
+      <x>110</x>
       <y>396</y>
       <width>151</width>
       <height>31</height>
@@ -3396,11 +3378,84 @@
    <widget class="QPushButton" name="emergencyButton">
     <property name="geometry">
      <rect>
-      <x>1340</x>
-      <y>20</y>
+      <x>1220</x>
+      <y>460</y>
       <width>181</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
     </property>
     <property name="cursor">
      <cursorShape>OpenHandCursor</cursorShape>
@@ -3422,7 +3477,215 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QTableWidget" name="parametersTable">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>470</y>
+      <width>301</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>269</number>
+    </attribute>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column>
+     <property name="text">
+      <string>#</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="sendParamButton">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>720</y>
+      <width>111</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="ButtonText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>SEND PARAM</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>320</y>
+      <width>281</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources.qrc">:/images/Background2.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
    <zorder>label_5</zorder>
+   <zorder>label_16</zorder>
    <zorder>PID_frame</zorder>
    <zorder>label_2</zorder>
    <zorder>label_14</zorder>
@@ -3450,6 +3713,8 @@
    <zorder>questTable</zorder>
    <zorder>sendButton</zorder>
    <zorder>emergencyButton</zorder>
+   <zorder>parametersTable</zorder>
+   <zorder>sendParamButton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionMainMenu">

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="MapView.qml">../../MapView.qml</file>
+        <file alias="icons/waypoint.png">../../icons/waypoint.png</file>
+        <file alias="icons/usv.png">../../icons/usv.png</file>
+    </qresource>
+</RCC>

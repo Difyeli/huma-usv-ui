@@ -46,6 +46,7 @@ public:
     QLabel *Longitude;
     QLabel *GPS_Label2;
     QLabel *Latitude;
+    QLabel *Voltage;
     QLabel *Voltage_Data;
     QLabel *SicaklikLabel;
     QLabel *Sicaklik_Data;
@@ -55,7 +56,6 @@ public:
     QLabel *SetPoint_Data;
     QLabel *Speed;
     QLabel *Speed_Data;
-    QLabel *Voltage;
     QLabel *SpeedFrame;
     QLabel *label;
     QChartView *SpeedGraph;
@@ -92,6 +92,9 @@ public:
     QTableWidget *questTable;
     QPushButton *sendButton;
     QPushButton *emergencyButton;
+    QTableWidget *parametersTable;
+    QPushButton *sendParamButton;
+    QLabel *label_16;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -193,7 +196,7 @@ public:
         centralwidget->setAutoFillBackground(true);
         formLayoutWidget = new QWidget(centralwidget);
         formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(1030, 150, 246, 402));
+        formLayoutWidget->setGeometry(QRect(930, 150, 221, 401));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName("formLayout");
         formLayout->setHorizontalSpacing(67);
@@ -210,7 +213,7 @@ public:
         Pitch_Data = new QLabel(formLayoutWidget);
         Pitch_Data->setObjectName("Pitch_Data");
         Pitch_Data->setFont(font);
-        Pitch_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Pitch_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, Pitch_Data);
 
@@ -223,7 +226,7 @@ public:
         Roll_Data = new QLabel(formLayoutWidget);
         Roll_Data->setObjectName("Roll_Data");
         Roll_Data->setFont(font);
-        Roll_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Roll_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, Roll_Data);
 
@@ -236,7 +239,7 @@ public:
         Yaw_Data = new QLabel(formLayoutWidget);
         Yaw_Data->setObjectName("Yaw_Data");
         Yaw_Data->setFont(font);
-        Yaw_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Yaw_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(2, QFormLayout::FieldRole, Yaw_Data);
 
@@ -249,7 +252,7 @@ public:
         Yon_Data = new QLabel(formLayoutWidget);
         Yon_Data->setObjectName("Yon_Data");
         Yon_Data->setFont(font);
-        Yon_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Yon_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, Yon_Data);
 
@@ -262,7 +265,7 @@ public:
         Longitude = new QLabel(formLayoutWidget);
         Longitude->setObjectName("Longitude");
         Longitude->setFont(font);
-        Longitude->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Longitude->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, Longitude);
 
@@ -275,14 +278,20 @@ public:
         Latitude = new QLabel(formLayoutWidget);
         Latitude->setObjectName("Latitude");
         Latitude->setFont(font);
-        Latitude->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Latitude->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(5, QFormLayout::FieldRole, Latitude);
+
+        Voltage = new QLabel(formLayoutWidget);
+        Voltage->setObjectName("Voltage");
+        Voltage->setFont(font);
+
+        formLayout->setWidget(6, QFormLayout::LabelRole, Voltage);
 
         Voltage_Data = new QLabel(formLayoutWidget);
         Voltage_Data->setObjectName("Voltage_Data");
         Voltage_Data->setFont(font);
-        Voltage_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Voltage_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(6, QFormLayout::FieldRole, Voltage_Data);
 
@@ -295,7 +304,7 @@ public:
         Sicaklik_Data = new QLabel(formLayoutWidget);
         Sicaklik_Data->setObjectName("Sicaklik_Data");
         Sicaklik_Data->setFont(font);
-        Sicaklik_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Sicaklik_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(7, QFormLayout::FieldRole, Sicaklik_Data);
 
@@ -308,7 +317,7 @@ public:
         QuestNo = new QLabel(formLayoutWidget);
         QuestNo->setObjectName("QuestNo");
         QuestNo->setFont(font);
-        QuestNo->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        QuestNo->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(8, QFormLayout::FieldRole, QuestNo);
 
@@ -321,7 +330,7 @@ public:
         SetPoint_Data = new QLabel(formLayoutWidget);
         SetPoint_Data->setObjectName("SetPoint_Data");
         SetPoint_Data->setFont(font);
-        SetPoint_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        SetPoint_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(9, QFormLayout::FieldRole, SetPoint_Data);
 
@@ -334,24 +343,18 @@ public:
         Speed_Data = new QLabel(formLayoutWidget);
         Speed_Data->setObjectName("Speed_Data");
         Speed_Data->setFont(font);
-        Speed_Data->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        Speed_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
         formLayout->setWidget(10, QFormLayout::FieldRole, Speed_Data);
 
-        Voltage = new QLabel(formLayoutWidget);
-        Voltage->setObjectName("Voltage");
-        Voltage->setFont(font);
-
-        formLayout->setWidget(6, QFormLayout::LabelRole, Voltage);
-
         SpeedFrame = new QLabel(centralwidget);
         SpeedFrame->setObjectName("SpeedFrame");
-        SpeedFrame->setGeometry(QRect(450, 440, 551, 334));
+        SpeedFrame->setGeometry(QRect(350, 440, 551, 334));
         SpeedFrame->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         SpeedFrame->setScaledContents(true);
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(670, 450, 123, 28));
+        label->setGeometry(QRect(570, 450, 123, 28));
         QPalette palette1;
         QBrush brush9(QColor(45, 55, 72, 255));
         brush9.setStyle(Qt::SolidPattern);
@@ -368,7 +371,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         SpeedGraph = new QChartView(centralwidget);
         SpeedGraph->setObjectName("SpeedGraph");
-        SpeedGraph->setGeometry(QRect(460, 456, 531, 297));
+        SpeedGraph->setGeometry(QRect(360, 456, 531, 297));
         QPalette palette2;
         palette2.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette2.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -465,17 +468,17 @@ public:
         Setpoint_txt->setFont(font2);
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(450, 90, 551, 351));
+        label_4->setGeometry(QRect(350, 90, 551, 351));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_4->setScaledContents(true);
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(20, 90, 431, 351));
+        label_6->setGeometry(QRect(20, 90, 331, 351));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
         label_6->setScaledContents(true);
         MapLabel = new QLabel(centralwidget);
         MapLabel->setObjectName("MapLabel");
-        MapLabel->setGeometry(QRect(710, 100, 45, 28));
+        MapLabel->setGeometry(QRect(610, 100, 45, 28));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette5.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -485,7 +488,7 @@ public:
         MapLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
         formLayoutWidget_2 = new QWidget(centralwidget);
         formLayoutWidget_2->setObjectName("formLayoutWidget_2");
-        formLayoutWidget_2->setGeometry(QRect(1020, 590, 241, 191));
+        formLayoutWidget_2->setGeometry(QRect(1200, 144, 221, 121));
         formLayout_2 = new QFormLayout(formLayoutWidget_2);
         formLayout_2->setObjectName("formLayout_2");
         formLayout_2->setHorizontalSpacing(60);
@@ -532,7 +535,7 @@ public:
 
         connectButton = new QPushButton(centralwidget);
         connectButton->setObjectName("connectButton");
-        connectButton->setGeometry(QRect(1050, 690, 180, 30));
+        connectButton->setGeometry(QRect(1220, 244, 180, 30));
         QPalette palette6;
         palette6.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette6.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -612,7 +615,7 @@ public:
         connectButton->setFlat(true);
         label_7 = new QLabel(centralwidget);
         label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(190, 95, 101, 31));
+        label_7->setGeometry(QRect(140, 95, 101, 31));
         QPalette palette7;
         palette7.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette7.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -622,7 +625,7 @@ public:
         label_7->setAlignment(Qt::AlignmentFlag::AlignCenter);
         settingsButton = new QPushButton(centralwidget);
         settingsButton->setObjectName("settingsButton");
-        settingsButton->setGeometry(QRect(1050, 726, 180, 30));
+        settingsButton->setGeometry(QRect(1220, 280, 180, 30));
         QPalette palette8;
         palette8.setBrush(QPalette::Active, QPalette::WindowText, brush);
         QBrush brush15(QColor(16, 191, 255, 255));
@@ -714,12 +717,12 @@ public:
         settingsButton->setFlat(true);
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(1000, 540, 281, 231));
+        label_3->setGeometry(QRect(1170, 90, 281, 231));
         label_3->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_3->setScaledContents(true);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(1000, 90, 281, 441));
+        label_2->setGeometry(QRect(900, 90, 271, 431));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/images/Background1.png")));
         label_2->setScaledContents(true);
         label_5 = new QLabel(centralwidget);
@@ -729,12 +732,12 @@ public:
         label_5->setScaledContents(true);
         ConnectionLogo = new QLabel(centralwidget);
         ConnectionLogo->setObjectName("ConnectionLogo");
-        ConnectionLogo->setGeometry(QRect(1070, 550, 28, 28));
+        ConnectionLogo->setGeometry(QRect(1240, 104, 28, 28));
         ConnectionLogo->setPixmap(QPixmap(QString::fromUtf8(":/images/ConnectionLogo.png")));
         ConnectionLogo->setScaledContents(true);
         label_9 = new QLabel(centralwidget);
         label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(1090, 554, 111, 20));
+        label_9->setGeometry(QRect(1260, 110, 111, 20));
         QPalette palette9;
         palette9.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette9.setBrush(QPalette::Active, QPalette::Text, brush9);
@@ -745,12 +748,12 @@ public:
         label_9->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName("label_8");
-        label_8->setGeometry(QRect(650, 450, 28, 28));
+        label_8->setGeometry(QRect(550, 450, 28, 28));
         label_8->setPixmap(QPixmap(QString::fromUtf8(":/images/SpeedLogo.png")));
         label_8->setScaledContents(true);
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(1120, 100, 96, 29));
+        label_10->setGeometry(QRect(1000, 100, 96, 29));
         QPalette palette10;
         palette10.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette10.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -758,32 +761,32 @@ public:
         label_10->setFont(font1);
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName("label_11");
-        label_11->setGeometry(QRect(680, 100, 28, 28));
+        label_11->setGeometry(QRect(580, 100, 28, 28));
         label_11->setPixmap(QPixmap(QString::fromUtf8(":/images/MapLogo.png")));
         label_11->setScaledContents(true);
         label_12 = new QLabel(centralwidget);
         label_12->setObjectName("label_12");
-        label_12->setGeometry(QRect(160, 98, 28, 28));
+        label_12->setGeometry(QRect(110, 98, 28, 28));
         label_12->setPixmap(QPixmap(QString::fromUtf8(":/images/QuestLogo.png")));
         label_12->setScaledContents(true);
         label_13 = new QLabel(centralwidget);
         label_13->setObjectName("label_13");
-        label_13->setGeometry(QRect(1090, 100, 28, 28));
+        label_13->setGeometry(QRect(970, 100, 28, 28));
         label_13->setPixmap(QPixmap(QString::fromUtf8(":/images/TelemetryLogo.png")));
         label_13->setScaledContents(true);
         label_14 = new QLabel(centralwidget);
         label_14->setObjectName("label_14");
-        label_14->setGeometry(QRect(1020, 140, 241, 373));
+        label_14->setGeometry(QRect(912, 133, 246, 373));
         label_14->setPixmap(QPixmap(QString::fromUtf8(":/images/Background4.png")));
         label_14->setScaledContents(true);
         PID_frame = new QLabel(centralwidget);
         PID_frame->setObjectName("PID_frame");
-        PID_frame->setGeometry(QRect(20, 439, 431, 331));
+        PID_frame->setGeometry(QRect(20, 439, 331, 331));
         PID_frame->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
         PID_frame->setScaledContents(true);
         label_15 = new QLabel(centralwidget);
         label_15->setObjectName("label_15");
-        label_15->setGeometry(QRect(160, 450, 151, 28));
+        label_15->setGeometry(QRect(110, 440, 151, 28));
         QPalette palette11;
         palette11.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette11.setBrush(QPalette::Active, QPalette::Text, brush9);
@@ -795,12 +798,12 @@ public:
         label_15->setAlignment(Qt::AlignmentFlag::AlignCenter);
         mapQuickWidget = new QQuickWidget(centralwidget);
         mapQuickWidget->setObjectName("mapQuickWidget");
-        mapQuickWidget->setGeometry(QRect(470, 130, 511, 291));
+        mapQuickWidget->setGeometry(QRect(370, 130, 511, 291));
         mapQuickWidget->setCursor(QCursor(Qt::CursorShape::CrossCursor));
         mapQuickWidget->setResizeMode(QQuickWidget::ResizeMode::SizeRootObjectToView);
         questTable = new QTableWidget(centralwidget);
-        if (questTable->columnCount() < 4)
-            questTable->setColumnCount(4);
+        if (questTable->columnCount() < 3)
+            questTable->setColumnCount(3);
         QFont font3;
         font3.setBold(true);
         font3.setItalic(true);
@@ -816,12 +819,8 @@ public:
         __qtablewidgetitem2->setFont(font3);
         __qtablewidgetitem2->setBackground(QColor(113, 226, 217));
         questTable->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        __qtablewidgetitem3->setFont(font3);
-        __qtablewidgetitem3->setBackground(QColor(113, 226, 217));
-        questTable->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         questTable->setObjectName("questTable");
-        questTable->setGeometry(QRect(36, 130, 401, 261));
+        questTable->setGeometry(QRect(35, 130, 301, 261));
         QPalette palette12;
         QBrush brush23(QColor(113, 226, 217, 255));
         brush23.setStyle(Qt::SolidPattern);
@@ -841,10 +840,10 @@ public:
         questTable->horizontalHeader()->setVisible(true);
         questTable->horizontalHeader()->setCascadingSectionResizes(true);
         questTable->horizontalHeader()->setDefaultSectionSize(92);
-        questTable->horizontalHeader()->setStretchLastSection(true);
+        questTable->horizontalHeader()->setStretchLastSection(false);
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName("sendButton");
-        sendButton->setGeometry(QRect(160, 396, 151, 31));
+        sendButton->setGeometry(QRect(110, 396, 151, 31));
         QPalette palette13;
         palette13.setBrush(QPalette::Active, QPalette::Button, brush2);
         palette13.setBrush(QPalette::Inactive, QPalette::Button, brush2);
@@ -858,15 +857,62 @@ public:
         sendButton->setFlat(true);
         emergencyButton = new QPushButton(centralwidget);
         emergencyButton->setObjectName("emergencyButton");
-        emergencyButton->setGeometry(QRect(1340, 20, 181, 51));
+        emergencyButton->setGeometry(QRect(1220, 460, 181, 51));
+        QPalette palette14;
+        palette14.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette14.setBrush(QPalette::Active, QPalette::Window, brush2);
+        palette14.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette14.setBrush(QPalette::Inactive, QPalette::Window, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::Base, brush2);
+        palette14.setBrush(QPalette::Disabled, QPalette::Window, brush2);
+        emergencyButton->setPalette(palette14);
         emergencyButton->setCursor(QCursor(Qt::CursorShape::OpenHandCursor));
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/images/EmergencyButton.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         emergencyButton->setIcon(icon3);
         emergencyButton->setIconSize(QSize(200, 33));
         emergencyButton->setFlat(true);
+        parametersTable = new QTableWidget(centralwidget);
+        if (parametersTable->columnCount() < 1)
+            parametersTable->setColumnCount(1);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        parametersTable->setHorizontalHeaderItem(0, __qtablewidgetitem3);
+        if (parametersTable->rowCount() < 6)
+            parametersTable->setRowCount(6);
+        parametersTable->setObjectName("parametersTable");
+        parametersTable->setGeometry(QRect(40, 470, 301, 241));
+        QPalette palette15;
+        palette15.setBrush(QPalette::Active, QPalette::Button, brush23);
+        palette15.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
+        palette15.setBrush(QPalette::Active, QPalette::Window, brush23);
+        palette15.setBrush(QPalette::Inactive, QPalette::Button, brush23);
+        palette15.setBrush(QPalette::Inactive, QPalette::ButtonText, brush2);
+        palette15.setBrush(QPalette::Inactive, QPalette::Window, brush23);
+        palette15.setBrush(QPalette::Disabled, QPalette::Button, brush23);
+        palette15.setBrush(QPalette::Disabled, QPalette::Base, brush23);
+        palette15.setBrush(QPalette::Disabled, QPalette::Window, brush23);
+        parametersTable->setPalette(palette15);
+        parametersTable->horizontalHeader()->setDefaultSectionSize(269);
+        sendParamButton = new QPushButton(centralwidget);
+        sendParamButton->setObjectName("sendParamButton");
+        sendParamButton->setGeometry(QRect(130, 720, 111, 29));
+        QPalette palette16;
+        palette16.setBrush(QPalette::Active, QPalette::Button, brush23);
+        palette16.setBrush(QPalette::Active, QPalette::ButtonText, brush2);
+        palette16.setBrush(QPalette::Inactive, QPalette::Button, brush23);
+        palette16.setBrush(QPalette::Inactive, QPalette::ButtonText, brush2);
+        palette16.setBrush(QPalette::Disabled, QPalette::Button, brush23);
+        sendParamButton->setPalette(palette16);
+        sendParamButton->setFont(font);
+        label_16 = new QLabel(centralwidget);
+        label_16->setObjectName("label_16");
+        label_16->setGeometry(QRect(1170, 320, 281, 201));
+        label_16->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
+        label_16->setScaledContents(true);
         MainWindow->setCentralWidget(centralwidget);
         label_5->raise();
+        label_16->raise();
         PID_frame->raise();
         label_2->raise();
         label_14->raise();
@@ -894,6 +940,8 @@ public:
         questTable->raise();
         sendButton->raise();
         emergencyButton->raise();
+        parametersTable->raise();
+        sendParamButton->raise();
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
@@ -920,6 +968,7 @@ public:
         Longitude->setText(QCoreApplication::translate("MainWindow", "0.01 ", nullptr));
         GPS_Label2->setText(QCoreApplication::translate("MainWindow", "Lattitude:", nullptr));
         Latitude->setText(QCoreApplication::translate("MainWindow", "0.01 ", nullptr));
+        Voltage->setText(QCoreApplication::translate("MainWindow", "Bat. Voltage:", nullptr));
         Voltage_Data->setText(QCoreApplication::translate("MainWindow", "12.6 V", nullptr));
         SicaklikLabel->setText(QCoreApplication::translate("MainWindow", "Heat:", nullptr));
         Sicaklik_Data->setText(QCoreApplication::translate("MainWindow", "22.7 \302\260C", nullptr));
@@ -929,7 +978,6 @@ public:
         SetPoint_Data->setText(QCoreApplication::translate("MainWindow", "0.0 m/s", nullptr));
         Speed->setText(QCoreApplication::translate("MainWindow", "Speed:", nullptr));
         Speed_Data->setText(QCoreApplication::translate("MainWindow", "0.0 m/s", nullptr));
-        Voltage->setText(QCoreApplication::translate("MainWindow", "Bat. Voltage:", nullptr));
         SpeedFrame->setText(QString());
         label->setText(QCoreApplication::translate("MainWindow", "Speed Graph", nullptr));
         Speed_txt->setText(QCoreApplication::translate("MainWindow", "0 m/s", nullptr));
@@ -958,17 +1006,19 @@ public:
         label_13->setText(QString());
         label_14->setText(QString());
         PID_frame->setText(QString());
-        label_15->setText(QCoreApplication::translate("MainWindow", "PID Parameters", nullptr));
+        label_15->setText(QCoreApplication::translate("MainWindow", "Parameters", nullptr));
         QTableWidgetItem *___qtablewidgetitem = questTable->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "#", nullptr));
+        ___qtablewidgetitem->setText(QCoreApplication::translate("MainWindow", "Latitude", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = questTable->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Latitude", nullptr));
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Longitude", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = questTable->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Longitude", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = questTable->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Sil", nullptr));
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Sil", nullptr));
         sendButton->setText(QString());
         emergencyButton->setText(QString());
+        QTableWidgetItem *___qtablewidgetitem3 = parametersTable->horizontalHeaderItem(0);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "#", nullptr));
+        sendParamButton->setText(QCoreApplication::translate("MainWindow", "SEND PARAM", nullptr));
+        label_16->setText(QString());
     } // retranslateUi
 
 };

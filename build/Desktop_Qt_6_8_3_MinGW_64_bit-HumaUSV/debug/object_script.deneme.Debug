@@ -1,0 +1,10 @@
+debug/connectionsettingsdialog.o
+debug/main.o
+debug/mainwindow.o
+debug/MapView_qml.o
+debug/qmlcache_loader.o
+debug/qrc_qml_qmlcache.o
+debug/qrc_resources.o
+debug/qrc_qmake_qmake_qm_files.o
+debug/moc_connectionsettingsdialog.o
+debug/moc_mainwindow.o
