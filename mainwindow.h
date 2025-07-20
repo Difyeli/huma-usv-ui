@@ -63,6 +63,15 @@ private:
     QSplineSeries *actualSeries{nullptr};
     QValueAxis    *axisX{nullptr};
     QValueAxis    *axisY{nullptr};
+
+
+    QChart*            pryChart;
+    QSplineSeries*     yawSeries;
+    QValueAxis*        axisX_pry;
+    QValueAxis*        axisY_pry;
+
+
+
     qreal         elapsedTime;
     bool            idaConnected = false;
     QString         currentPortName = "COM8";

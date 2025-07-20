@@ -25,6 +25,7 @@
 #include <QVariant>
 #include <QMessageBox>
 #include <QThread>
+#include <QColor>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,6 +36,10 @@ MainWindow::MainWindow(QWidget *parent) :
     actualSeries(new QSplineSeries),
     axisX(new QValueAxis),
     axisY(new QValueAxis),
+    pryChart(new QChart),
+    yawSeries(new QSplineSeries),
+    axisX_pry(new QValueAxis),
+    axisY_pry(new QValueAxis),
     elapsedTime(0),
     currentPortName("COM8"),
     currentBaudRate(QSerialPort::Baud9600),
@@ -72,6 +77,9 @@ MainWindow::MainWindow(QWidget *parent) :
     actualSeries->setName("Mevcut Hız");
     speedChart->addSeries(setPointSeries);
     speedChart->addSeries(actualSeries);
+    setPointSeries->setColor(QColor("#40e0d0"));
+    actualSeries  ->setColor(QColor("#ff8c00"));
+
     speedChart->legend()->setAlignment(Qt::AlignBottom);
 
     axisX->setTitleText("Zaman (s)");
@@ -88,6 +96,16 @@ MainWindow::MainWindow(QWidget *parent) :
     setPointSeries->attachAxis(axisY);
     actualSeries->attachAxis(axisY);
 
+    speedChart->setBackgroundVisible(false);
+    // Çerçeveyi kaldır
+    ui->SpeedGraph->setFrameStyle(QFrame::NoFrame);
+
+    // View’in arka planını şeffaf yap (hiçbir fırça kullanma)
+    ui->SpeedGraph->setStyleSheet("background-color: transparent; border: none;");
+    speedChart->setPlotAreaBackgroundVisible(false);
+    speedChart->setPlotAreaBackgroundBrush(Qt::NoBrush);
+
+
     ui->SpeedGraph->setChart(speedChart);
     ui->SpeedGraph->setRenderHint(QPainter::Antialiasing);
 
@@ -96,9 +114,46 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(actualSeries, &QXYSeries::hovered,
             this, &MainWindow::showDataPoint);
 
-    connect(ui->sendButton, &QPushButton::clicked,
-            this, &MainWindow::on_sendParamButton_clicked);
 
+
+
+    // --- Pitch–Yaw–Roll Graph Setup ---
+
+    yawSeries  ->setName("Yaw");
+
+    pryChart->addSeries(yawSeries);   
+    pryChart->legend()->setAlignment(Qt::AlignBottom);
+
+    axisX_pry->setTitleText("Zaman (s)");
+    axisX_pry->setLabelFormat("%.1f");
+
+
+    axisY_pry->setTitleText("Derece (°)");
+    axisY_pry->setLabelFormat("%.1f");
+    axisY_pry->setRange(-45, 45);             // <-- burayı bu şekilde ayarlıyoruz
+    axisY_pry->setGridLinePen(QPen(QColor(200,200,200,100), 1, Qt::DashLine));
+
+    pryChart->addAxis(axisX_pry, Qt::AlignBottom);
+    pryChart->addAxis(axisY_pry, Qt::AlignLeft);
+
+
+
+    pryChart->setBackgroundVisible(false);
+    ui->PRYGraph->setFrameStyle(QFrame::NoFrame);
+    ui->PRYGraph->setStyleSheet("background-color: transparent; border: none;");
+    pryChart->setPlotAreaBackgroundVisible(false);
+    pryChart->setPlotAreaBackgroundBrush(Qt::NoBrush);
+
+    yawSeries  ->attachAxis(axisX_pry);
+    yawSeries  ->attachAxis(axisY_pry);
+    yawSeries  ->setColor(QColor("#ff8c00"));
+
+
+
+    // QChartView: Designer’da bir QChartView @ ui->PRYGraph olarak yerleştirin
+    ui->PRYGraph->setChart(pryChart);
+    ui->PRYGraph->setRenderHint(QPainter::Antialiasing);
+    connect(yawSeries,   &QXYSeries::hovered, this, &MainWindow::showDataPoint);
 
     // Seri porttan veri okuma
     connect(serial, &QSerialPort::readyRead,
@@ -375,22 +430,29 @@ void MainWindow::handleSerialData()
         ui->Speed_Data   ->setText(QString::number(currentSpeed,'f',2)+" m/s");
         ui->Setpoint_txt->setText(QString::number(setPoint,'f',2)+" m/s");
         ui->Speed_txt   ->setText(QString::number(currentSpeed,'f',2)+" m/s");
-
+        ui->Speed_txt_2     ->setText(QString::number(yaw,   'f', 2) + " °");
 
         updateMapPosition(latitude, longitude);
         updateMapHeading(heading);
 
 
         // grafiğe ekle
+
         actualSeries->append(elapsedTime, currentSpeed);
+        yawSeries  ->append(elapsedTime, yaw);
+
+
         elapsedTime += 1.0;
         axisX->setRange(0, elapsedTime);
+
 
         // --- Sliding window ekseni ayarı ---
         // pencere başı = elapsedTime - windowDuration, ama negatif olmasın
         qreal t0 = qMax<qreal>(0.0, elapsedTime - windowDuration);
         // ekseni [t0, t0+windowDuration] aralığında göster
         axisX->setRange(t0, t0 + windowDuration);
+        axisX_pry  ->setRange(t0, t0 + windowDuration);
+
 
         // çok eski noktaları at (performans için)
         auto trim = [t0](QSplineSeries* s){
@@ -401,6 +463,8 @@ void MainWindow::handleSerialData()
         };
 
         trim(actualSeries);
+        trim(actualSeries);
+        trim(yawSeries);
 
         setPointSeries->clear();
         setPointSeries->append(t0,              setPoint);

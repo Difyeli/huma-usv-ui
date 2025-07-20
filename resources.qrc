@@ -14,16 +14,21 @@
         <file>images/taleback.png</file>
         <file>images/WhiteBG.png</file>
         <file>images/GrayBG.png</file>
-        <file>images/ConnectionLogo.png</file>
-        <file>images/SpeedLogo.png</file>
-        <file>images/MapLogo.png</file>
-        <file>images/QuestLogo.png</file>
-        <file>images/TelemetryLogo.png</file>
         <file>images/Background4.png</file>
+        <file>images/QuestLogo.png</file>
+        <file>images/SpeedLogo.png</file>
+        <file>images/DirectionLogo.png</file>
+        <file>images/ConnectionLogo.png</file>
+        <file>images/TelemetryLogo.png</file>
+        <file>images/MapLogo.png</file>
+        <file>images/ParameterLogo.png</file>
+        <file>images/paramButton.png</file>
         <file>images/ConnectButton.png</file>
         <file>images/DisconnectButton.png</file>
-        <file>images/SettingsButton.png</file>
         <file>images/EmergencyButton.png</file>
         <file>images/sendButton.png</file>
+        <file>images/SettingsButton.png</file>
+        <file>images/StopButton.png</file>
+        <file>images/StartButton.png</file>
     </qresource>
 </RCC>
