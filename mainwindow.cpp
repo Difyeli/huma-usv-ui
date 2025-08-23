@@ -26,6 +26,7 @@
 #include <QMessageBox>
 #include <QThread>
 #include <QColor>
+#include <QScrollBar>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -36,8 +37,22 @@ MainWindow::MainWindow(QWidget *parent) :
     actualSeries(new QSplineSeries),
     axisX(new QValueAxis),
     axisY(new QValueAxis),
+
+    speedChart2(new QChart),
+    setPointSeries2(new QSplineSeries),
+    actualSeries2(new QSplineSeries),
+    axisX_2(new QValueAxis),
+    axisY_2(new QValueAxis),
+
+    ThrusterChart(new QChart),
+    setPointSeriesR(new QSplineSeries),
+    actualSeriesR(new QSplineSeries),
+    axisX_R(new QValueAxis),
+    axisY_R(new QValueAxis),
+
     pryChart(new QChart),
     yawSeries(new QSplineSeries),
+    setPointYaw(new QSplineSeries),
     axisX_pry(new QValueAxis),
     axisY_pry(new QValueAxis),
     elapsedTime(0),
@@ -49,6 +64,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
 {
     ui->setupUi(this);
+
+
+    // Designer’da eklediğiniz frame’leri pointer’a atıyoruz
+    remoteLamp   = ui->remoteLamp;
+    failsafeLamp = ui->failsafeLamp;
+
+    // Başlangıç rengi: gri (pasif)
+    remoteLamp->setStyleSheet("background-color: lightgray; border:1px solid #555; border-radius:3px;");
+    failsafeLamp->setStyleSheet("background-color: lightgray; border:1px solid #555; border-radius:3px;");
+
 
 
     // — QML Harita
@@ -73,8 +98,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->baudValueLabel->clear();
 
     // Speed Graph
-    setPointSeries->setName("Set Point Hız");
-    actualSeries->setName("Mevcut Hız");
+    setPointSeries->setName("Left Set Point");
+    actualSeries->setName("Actual Speed");
     speedChart->addSeries(setPointSeries);
     speedChart->addSeries(actualSeries);
     setPointSeries->setColor(QColor("#40e0d0"));
@@ -82,16 +107,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
     speedChart->legend()->setAlignment(Qt::AlignBottom);
 
-    axisX->setTitleText("Zaman (s)");
+    axisX->setTitleText("Time (s)");
     axisX->setLabelFormat("%.1f");
-    axisX->setRange(0, 0);
+    axisX->setRange(0, 30);
     speedChart->addAxis(axisX, Qt::AlignBottom);
     setPointSeries->attachAxis(axisX);
     actualSeries->attachAxis(axisX);
 
-    axisY->setTitleText("Hız (m/s)");
+    axisY->setTitleText("Speed (m/s)");
     axisY->setLabelFormat("%.2f");
-    axisY->setRange(0, 2);
+    axisY->setRange(0, 1.5);
     speedChart->addAxis(axisY, Qt::AlignLeft);
     setPointSeries->attachAxis(axisY);
     actualSeries->attachAxis(axisY);
@@ -115,44 +140,140 @@ MainWindow::MainWindow(QWidget *parent) :
             this, &MainWindow::showDataPoint);
 
 
+    // --- İkinci Speed Graph Setup (aynı mantık) ---
+    //
+    setPointSeries2->setName("Setpoint PWM");
+    actualSeries2 ->setName("Left PWM");
+    speedChart2->addSeries(setPointSeries2);
+    speedChart2->addSeries(actualSeries2);
+    speedChart2->legend()->setAlignment(Qt::AlignBottom);
+    setPointSeries2->setColor(QColor("#40e0d0"));
+    actualSeries2  ->setColor(QColor("#ff8c00"));
+
+    axisX_2->setTitleText("Time (s)");
+    axisX_2->setLabelFormat("%.1f");
+    axisX_2->setRange(0, 30);
+    speedChart2->addAxis(axisX_2, Qt::AlignBottom);
+    setPointSeries2->attachAxis(axisX_2);
+    actualSeries2->attachAxis(axisX_2);
+
+    axisY_2->setTitleText("Left PWM ");
+    axisY_2->setLabelFormat("%.2f");
+    axisY_2->setRange(0, 1600);
+    speedChart2->addAxis(axisY_2, Qt::AlignLeft);
+    setPointSeries2->attachAxis(axisY_2);
+    actualSeries2->attachAxis(axisY_2);
+
+    speedChart2->setBackgroundVisible(false);
+    // Çerçeveyi kaldır
+    ui->SpeedGraph2->setFrameStyle(QFrame::NoFrame);
+
+    // View’in arka planını şeffaf yap (hiçbir fırça kullanma)
+    ui->SpeedGraph2->setStyleSheet("background-color: transparent; border: none;");
+    speedChart2->setPlotAreaBackgroundVisible(false);
+    speedChart2->setPlotAreaBackgroundBrush(Qt::NoBrush);
+
+
+
+    ui->SpeedGraph2->setChart(speedChart2);
+    ui->SpeedGraph2->setRenderHint(QPainter::Antialiasing);
+
+    connect(setPointSeries2, &QXYSeries::hovered,
+            this, &MainWindow::showDataPoint);
+    connect(actualSeries2, &QXYSeries::hovered,
+            this, &MainWindow::showDataPoint);
+
+
+    //RightThrusters
+
+    setPointSeriesR->setName("Setpoint PWM");
+    actualSeriesR ->setName("Right PWM");
+    ThrusterChart->addSeries(setPointSeriesR);
+    ThrusterChart->addSeries(actualSeriesR);
+    ThrusterChart->legend()->setAlignment(Qt::AlignBottom);
+
+
+    axisX_R->setTitleText("Time(s)");
+    axisX_R->setLabelFormat("%.1f");
+    axisX_R->setRange(0, 0);
+    ThrusterChart->addAxis(axisX_R, Qt::AlignBottom);
+    setPointSeriesR->attachAxis(axisX_R);
+    actualSeriesR->attachAxis(axisX_R);
+
+    axisY_R->setTitleText("Right PWM");
+    axisY_R->setLabelFormat("%.2f");
+    axisY_R->setRange(0, 1600);
+    ThrusterChart->addAxis(axisY_R, Qt::AlignLeft);
+    setPointSeriesR->attachAxis(axisY_R);
+    actualSeriesR->attachAxis(axisY_R);
+
+    ThrusterChart->setBackgroundVisible(false);
+    // Çerçeveyi kaldır
+    ui->ThrusterChart->setFrameStyle(QFrame::NoFrame);
+
+    // View’in arka planını şeffaf yap (hiçbir fırça kullanma)
+    ui->ThrusterChart->setStyleSheet("background-color: transparent; border: none;");
+    ThrusterChart->setPlotAreaBackgroundVisible(false);
+    ThrusterChart->setPlotAreaBackgroundBrush(Qt::NoBrush);
+
+
+
+    ui->ThrusterChart->setChart(ThrusterChart);
+    ui->ThrusterChart->setRenderHint(QPainter::Antialiasing);
+
+    connect(setPointSeriesR, &QXYSeries::hovered,
+            this, &MainWindow::showDataPoint);
+    connect(actualSeriesR, &QXYSeries::hovered,
+            this, &MainWindow::showDataPoint);
+
+
+
 
 
     // --- Pitch–Yaw–Roll Graph Setup ---
+    yawSeries   ->setName("Yaw");
+    setPointYaw ->setName("Setpoint Yaw");
 
-    yawSeries  ->setName("Yaw");
-
-    pryChart->addSeries(yawSeries);   
+    pryChart->addSeries(yawSeries);
+    pryChart->addSeries(setPointYaw);
     pryChart->legend()->setAlignment(Qt::AlignBottom);
 
+    // X ekseni
     axisX_pry->setTitleText("Zaman (s)");
     axisX_pry->setLabelFormat("%.1f");
 
-
+    // Y ekseni
     axisY_pry->setTitleText("Derece (°)");
     axisY_pry->setLabelFormat("%.1f");
-    axisY_pry->setRange(-45, 45);             // <-- burayı bu şekilde ayarlıyoruz
+    axisY_pry->setRange(0, 360);
     axisY_pry->setGridLinePen(QPen(QColor(200,200,200,100), 1, Qt::DashLine));
 
+    // Eksenleri ekle
     pryChart->addAxis(axisX_pry, Qt::AlignBottom);
     pryChart->addAxis(axisY_pry, Qt::AlignLeft);
 
+    // yawSeries’i eksenlere tak
+    yawSeries->attachAxis(axisX_pry);
+    yawSeries->attachAxis(axisY_pry);
+    yawSeries->setColor(QColor("#ff8c00"));  // turuncu
+    connect(yawSeries, &QXYSeries::hovered, this, &MainWindow::showDataPoint);
 
+    // setPointYaw’i de aynı eksenlere tak
+    setPointYaw->attachAxis(axisX_pry);
+    setPointYaw->attachAxis(axisY_pry);
+    setPointYaw->setColor(QColor("#008B8B")); // deniz mavisi gibi bir renk
+    connect(setPointYaw, &QXYSeries::hovered, this, &MainWindow::showDataPoint);
 
+    // ChartView ayarları
     pryChart->setBackgroundVisible(false);
     ui->PRYGraph->setFrameStyle(QFrame::NoFrame);
     ui->PRYGraph->setStyleSheet("background-color: transparent; border: none;");
     pryChart->setPlotAreaBackgroundVisible(false);
     pryChart->setPlotAreaBackgroundBrush(Qt::NoBrush);
 
-    yawSeries  ->attachAxis(axisX_pry);
-    yawSeries  ->attachAxis(axisY_pry);
-    yawSeries  ->setColor(QColor("#ff8c00"));
-
-
-
-    // QChartView: Designer’da bir QChartView @ ui->PRYGraph olarak yerleştirin
     ui->PRYGraph->setChart(pryChart);
     ui->PRYGraph->setRenderHint(QPainter::Antialiasing);
+
     connect(yawSeries,   &QXYSeries::hovered, this, &MainWindow::showDataPoint);
 
     // Seri porttan veri okuma
@@ -161,7 +282,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this, &MainWindow::addWaypoint, this, &MainWindow::addWaypoint);
 
-
+    addLogMessage("Sistem başlatıldı");
 }
 
 MainWindow::~MainWindow()
@@ -293,7 +414,7 @@ void MainWindow::on_sendButton_clicked()
     }
 
     // Başına "$", satırları ";" ile ayır, sonuna "\n"
-    QString payload = "$" + pairs.join(';');
+    QString payload = "?" + pairs.join(';');
     QByteArray packet = payload.toUtf8() + '\n';
 
     qint64 written = serial->write(packet);
@@ -307,7 +428,7 @@ void MainWindow::on_sendButton_clicked()
     }
 }
 
-void MainWindow::on_sendParamButton_clicked()
+/*void MainWindow::on_sendParamButton_clicked()
 {
     // 1) Önce portun açık olup olmadığını kontrol edelim
     if (!serial->isOpen()) {
@@ -359,7 +480,7 @@ void MainWindow::on_sendParamButton_clicked()
                                  QString("%1 parametre satırı içeren paket gönderildi.")
                                      .arg(rowStrings.size()));
     }
-}
+}*/
 
 void MainWindow::on_emergencyButton_clicked()
 {
@@ -373,7 +494,7 @@ void MainWindow::on_emergencyButton_clicked()
 
     // Gönderilecek durdurma komutu
     // (Aracınızın protokolüne göre düzenleyin)
-    const QByteArray stopCmd = "STOP\n";
+    const QByteArray stopCmd = "!failsafe\n";
 
     qint64 bytes = serial->write(stopCmd);
     if (bytes == stopCmd.size()) {
@@ -397,81 +518,169 @@ void MainWindow::handleSerialData()
 
     while (buffer.contains('\n')) {
         int idx = buffer.indexOf('\n');
-        QByteArray line = buffer.left(idx).trimmed();
+        QByteArray rawLine = buffer.left(idx).trimmed();
         buffer.remove(0, idx + 1);
 
-        auto parts = line.split(';');
-        if (parts.size() < 11) continue;
 
-        // parse telemetry
-        qreal pitch        = parts[0].toDouble();
-        qreal roll         = parts[1].toDouble();
-        qreal yaw          = parts[2].toDouble();
-        qreal heading      = parts[3].toDouble();
-        qreal longitude    = parts[4].toFloat();
-        qreal latitude     = parts[5].toFloat();
-        qreal voltage      = parts[6].toDouble();
-        qreal temperature  = parts[7].toDouble();
-        int   questNo      = parts[8].toInt();
-        qreal setPoint     = parts[9].toDouble();
-        qreal currentSpeed = parts[10].toDouble();
+        QString line = QString::fromUtf8(rawLine);
+        line = line.trimmed();
 
-        // UI güncelle
-        ui->Pitch_Data   ->setText(QString::number(pitch, 'f', 2) + " °");
-        ui->Roll_Data    ->setText(QString::number(roll,  'f', 2) + " °");
-        ui->Yaw_Data     ->setText(QString::number(yaw,   'f', 2) + " °");
-        ui->Yon_Data     ->setText(QString::number(heading,'f', 2) + " °");
-        ui->Longitude   ->setText(QString::number(longitude,'f',5));
-        ui->Latitude    ->setText(QString::number(latitude, 'f',5));
-        ui->Voltage_Data ->setText(QString::number(voltage, 'f',1) + " V");
-        ui->Sicaklik_Data->setText(QString::number(temperature,'f',1)+" °C");
-        ui->QuestNo      ->setText(QString::number(questNo));
+        // opsiyonel: süslü parantezleri at
+        if (line.startsWith("{") && line.endsWith("}")) {
+            line = line.mid(1, line.length()-2);
+        }
+
+        QStringList parts = line.split(',');
+        if (parts.size() < 13)
+            continue;
+
+        double latitude     = parts[0].toFloat();
+        double longitude    = parts[1].toFloat();
+        int    SIV          = parts[2].toInt();
+        bool   remoteActive = parts[3].compare("true", Qt::CaseInsensitive)==0;
+        bool   failsafe     = (parts[4] == "FS1");
+        qreal currentSpeed2 = parts[5].toDouble();
+        qreal currentSpeedR = parts[6].toDouble();
+        double yawDeg       = parts[7].toDouble();
+        qreal currentSpeed  = parts[8].toDouble();
+        qreal setPoint      = parts[9].toDouble();
+        double yawSetpoint  = parts[10].toDouble();
+        qreal setPoint2     = parts[11].toDouble();
+        qreal setPointR     = parts[12].toDouble();
+
+        // --- Özel Mesajı Ayıkla (Varsa) ---
+        QString specialMessage;
+        if (parts.size() >= 14) {
+            QString msgField = parts[13].trimmed();
+            if (msgField.startsWith("MSG:")) {
+                specialMessage = msgField.mid(4); // "GOTO1", "ARR1", vs.
+            }
+        }
+
+        if (!specialMessage.isEmpty()) {
+            if      (specialMessage == "GOTO1")  addLogMessage("1. GPS noktasına yöneliniyor");
+            else if (specialMessage == "ARR1")   addLogMessage("1. GPS noktasına ulaşıldı", "success");
+            else if (specialMessage == "GOTO2")  addLogMessage("2. GPS noktasına yöneliniyor");
+            else if (specialMessage == "ARR2")   addLogMessage("2. GPS noktasına ulaşıldı", "success");
+            else if (specialMessage == "FINISH") addLogMessage("Görev tamamlandı", "success");
+            else if (specialMessage == "CANCEL") addLogMessage("Görev iptal edildi", "warning");
+            else if (specialMessage == "GPS_ERR") addLogMessage("GPS sinyal kaybı", "error");
+            else if (specialMessage == "VOLT_ERR") addLogMessage("Pil voltajı düşük", "error");
+            else if (specialMessage == "MOTOR_ERR") addLogMessage("Motor arızası", "error");
+            else if (specialMessage == "SENSOR_ERR") addLogMessage("Sensör hatası", "error");
+            else addLogMessage("Bilinmeyen mesaj: " + specialMessage, "warning");
+        }
+
+
+
+        // --- UI’ı güncelle ---
+
+        // ui->GpsTimeLabel  ->setText(gpsTime);  // eğer bir etiket varsa
+        ui->Latitude        ->setText(QString::number(latitude,  'f', 8));
+        ui->Longitude       ->setText(QString::number(longitude, 'f', 8));
+        ui->Yaw_Data        ->setText(QString::number(yawDeg,    'f', 2) + " °");
+        ui->Direction_Data  ->setText(QString::number(yawSetpoint,    'f', 2) + " °");
+        ui->SIV_Data        ->setText(QString::number(SIV));
+        ui->RemoteActive_Data->setText(remoteActive ? "Yes" : "No");
+        ui->Failsafe_Data   ->setText(failsafe ? "FS1" : "OK");
         ui->SetPoint_Data->setText(QString::number(setPoint,'f',2)+" m/s");
         ui->Speed_Data   ->setText(QString::number(currentSpeed,'f',2)+" m/s");
-        ui->Setpoint_txt->setText(QString::number(setPoint,'f',2)+" m/s");
-        ui->Speed_txt   ->setText(QString::number(currentSpeed,'f',2)+" m/s");
-        ui->Speed_txt_2     ->setText(QString::number(yaw,   'f', 2) + " °");
+        ui->SetPoint_Data2->setText(QString::number(setPoint2,'f',2));
+        ui->Speed_Data2   ->setText(QString::number(currentSpeed2,'f',2));
+        ui->SetPoint_DataR->setText(QString::number(setPointR,'f',2));
+        ui->Speed_DataR   ->setText(QString::number(currentSpeedR,'f',2));
+
 
         updateMapPosition(latitude, longitude);
-        updateMapHeading(heading);
+        updateMapHeading(yawDeg);
 
 
-        // grafiğe ekle
-
-        actualSeries->append(elapsedTime, currentSpeed);
-        yawSeries  ->append(elapsedTime, yaw);
-
-
-        elapsedTime += 1.0;
-        axisX->setRange(0, elapsedTime);
-
-
-        // --- Sliding window ekseni ayarı ---
-        // pencere başı = elapsedTime - windowDuration, ama negatif olmasın
-        qreal t0 = qMax<qreal>(0.0, elapsedTime - windowDuration);
-        // ekseni [t0, t0+windowDuration] aralığında göster
-        axisX->setRange(t0, t0 + windowDuration);
-        axisX_pry  ->setRange(t0, t0 + windowDuration);
-
-
-        // çok eski noktaları at (performans için)
-        auto trim = [t0](QSplineSeries* s){
-            // points() vektörünün ilk noktasının x()<t0 olduğu sürece sil
-            while (!s->points().isEmpty() && s->points().first().x() < t0) {
-                s->removePoints(0, 1);
+        const double eps = 1e-5;
+        for (int r = 0; r < ui->questTable->rowCount(); ++r) {
+            bool okLat, okLon;
+            double latRow = ui->questTable->item(r, 0)->text().toDouble(&okLat);
+            double lonRow = ui->questTable->item(r, 1)->text().toDouble(&okLon);
+            if (okLat && okLon) {
+                bool match = qAbs(latRow  - latitude)  < eps
+                             && qAbs(lonRow  - longitude) < eps;
+                QColor color = match ? QColor(200, 255, 200) : Qt::white;
+                // Hem latitude hem longitude hücresini renklendir
+                ui->questTable->item(r, 0)->setBackground(color);
+                ui->questTable->item(r, 1)->setBackground(color);
             }
+        }
+
+
+        // --- Zamanı al ve sayacı artır ---
+        qreal t = elapsedTime;
+        elapsedTime += 1.0;
+
+        // --- Actual series’e ekle ---
+        actualSeries ->append(t, currentSpeed);
+        actualSeries2->append(t, currentSpeed2);
+        actualSeriesR->append(t, currentSpeedR);
+        yawSeries    ->append(t, yawDeg);
+        setPointYaw ->append(t, yawSetpoint);
+
+        // --- Sliding‐window ve setPoint çizgileri için ---
+        const qreal window = windowDuration;  // mesela 30.0
+        qreal t0 = qMax<qreal>(0.0, elapsedTime - window);
+
+        // 1) Eski actual noktalarını kırp
+        auto trim = [t0](QSplineSeries* s){
+            while (!s->points().isEmpty() && s->points().first().x() < t0)
+                s->removePoints(0,1);
         };
-
         trim(actualSeries);
-        trim(actualSeries);
+        trim(actualSeries2);
+        trim(actualSeriesR);
         trim(yawSeries);
+        trim(setPointYaw);
 
-        setPointSeries->clear();
-        setPointSeries->append(t0,              setPoint);
-        setPointSeries->append(t0 + windowDuration, setPoint);
+        // 2) SetPoint serileri: önce temizle, sonra iki nokta ekle
+        setPointSeries ->clear();
+        setPointSeries ->append(t0,           setPoint);
+        setPointSeries ->append(t0 + window,  setPoint);
+
+        setPointSeries2->clear();
+        setPointSeries2->append(t0,           setPoint2);
+        setPointSeries2->append(t0 + window,  setPoint2);
+
+        setPointSeriesR->clear();
+        setPointSeriesR->append(t0,           setPointR);
+        setPointSeriesR->append(t0 + window,  setPointR);
+
+        setPointYaw->clear();
+        setPointYaw->append(t0,           yawSetpoint);
+        setPointYaw->append(t0 + window,  yawSetpoint);
+
+        // 3) Eksen aralıklarını sabitle
+        axisX  ->setRange(t0, t0 + window);
+        axisX_2->setRange(t0, t0 + window);
+        axisX_R->setRange(t0, t0 + window);
+        axisX_pry->setRange(t0, t0 + window);
+
+
+        // --- Remote lambasını yak/gizle ---
+        if (remoteActive) {
+            // remoteActive == true  → yeşil
+             remoteLamp->setStyleSheet("background-color: green; border:1px solid #555; border-radius:3px;");
+        } else {
+            // remoteActive == false → sarı
+            remoteLamp->setStyleSheet("background-color: yellow; border:1px solid #555; border-radius:3px;");
+        }
+
+        // --- Failsafe lambasını yak/gizle ---
+        if (failsafe) {
+            // failsafe == true  → kırmızı
+            failsafeLamp->setStyleSheet("background-color: red; border:1px solid #555; border-radius:3px;");
+        } else {
+            // failsafe == false → gri
+            failsafeLamp->setStyleSheet("background-color: lightgray; border:1px solid #555; border-radius:3px;");
+        }
 
         // CSV kaydına yaz
-        if (recording && csvStream) {
+       /* if (recording && csvStream) {
             QString ts = QDateTime::currentDateTime()
             .toString(Qt::ISODateWithMs);
             *csvStream << ts << ','
@@ -488,7 +697,7 @@ void MainWindow::handleSerialData()
                        << currentSpeed
                        << '\n';
             csvStream->flush();
-        }
+        }*/
 
         ui->connectButton->setEnabled(true);
         ui->connectButton->setToolTip("");
@@ -498,7 +707,7 @@ void MainWindow::handleSerialData()
 void MainWindow::showDataPoint(const QPointF &point, bool state)
 {
     if (!state) return;
-    QString txt = QString("Zaman: %1 s\nHız: %2 m/s")
+    QString txt = QString("Time: %1 s\n X-Axis: %2 m/s")
                       .arg(point.x(), 0, 'f', 2)
                       .arg(point.y(), 0, 'f', 2);
     QToolTip::showText(QCursor::pos(), txt);
@@ -526,7 +735,7 @@ void MainWindow::addWaypoint(double lat, double lon) {
 
     // 4) Sil butonu
 
-    QPushButton *del = new QPushButton("Sil");
+    QPushButton *del = new QPushButton("Delete");
     ui->questTable->setCellWidget(row, 2, del);
     connect(del, &QPushButton::clicked, this, &MainWindow::handleDeleteButton);
 }
@@ -551,11 +760,6 @@ void MainWindow::handleDeleteButton()
     // 2) Tablo satırını sil
     ui->questTable->removeRow(row);
 
-    // 3) Kalan satırları yeniden numaralandır
-    for (int r = 0; r < ui->questTable->rowCount(); ++r) {
-        ui->questTable->item(r, 0)
-        ->setText(QString::number(r + 1));
-    }
 }
 
 
@@ -628,3 +832,36 @@ void MainWindow::updateMapHeading(double heading)
         r->setProperty("vehicleHeading", heading);
 }
 
+
+
+
+void MainWindow::addLogMessage(const QString &message, const QString &type)
+{
+    if (!ui->textLog) return;
+
+    QString timestamp = QDateTime::currentDateTime().toString("hh:mm:ss");
+    QString formattedMessage;
+
+    if (type == "error") {
+        formattedMessage = QString("[%1] HATA: %2\n").arg(timestamp, message);
+        // QPlainTextEdit için HTML yerine düz metin, renk için extra işlem gerekebilir
+    } else if (type == "success") {
+        formattedMessage = QString("[%1] ✓ %2\n").arg(timestamp, message);
+    } else if (type == "warning") {
+        formattedMessage = QString("[%1] UYARI: %2\n").arg(timestamp, message);
+    } else {
+        formattedMessage = QString("[%1] %2\n").arg(timestamp, message);
+    }
+
+    // QPlainTextEdit için append kullan
+    ui->textLog->appendPlainText(formattedMessage);
+
+    // Otomatik scroll
+    QScrollBar *scrollbar = ui->textLog->verticalScrollBar();
+    if (scrollbar) {
+        scrollbar->setValue(scrollbar->maximum());
+    }
+
+    // Konsola da yaz (debug için)
+    qDebug().noquote() << formattedMessage.trimmed();
+}

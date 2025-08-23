@@ -130,9 +130,11 @@ release/qrc_resources.cpp: ../../resources.qrc \
 		../../../../Qt/6.8.3/mingw_64/bin/rcc.exe \
 		../../images/States1.png \
 		../../images/arrow.png \
+		../../images/IHALogo.png \
 		../../images/ParameterLogo.png \
 		../../images/Background1.png \
 		../../images/Graph.png \
+		../../images/PWMLogo.png \
 		../../images/SettingsButton.png \
 		../../images/Background2.png \
 		../../images/StartButton.png \
@@ -140,6 +142,7 @@ release/qrc_resources.cpp: ../../resources.qrc \
 		../../images/Huma3.png \
 		../../images/sendButton.png \
 		../../images/DirectionLogo.png \
+		../../images/IDALogo.png \
 		../../images/taleback.png \
 		../../images/ConnectButton.png \
 		../../images/Telemetri.png \
@@ -157,6 +160,7 @@ release/qrc_resources.cpp: ../../resources.qrc \
 		../../images/ConnectionLogo.png \
 		../../images/DisconnectButton.png \
 		../../images/StopButton.png \
+		../../images/Background5.png \
 		../../images/Background3.png
 	D:\Qt\6.8.3\mingw_64\bin\rcc.exe -name resources --no-zstd ..\..\resources.qrc -o release\qrc_resources.cpp
 
@@ -655,6 +659,8 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfiledevice.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QDateTime \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFrame \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
 		release/mocinclude.opt \
 		release/moc_predefs.h \
 		../../../../Qt/6.8.3/mingw_64/bin/moc.exe
@@ -1426,6 +1432,8 @@ release/main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfiledevice.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QDateTime \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFrame \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QApplication \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qapplication.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QLocale \
@@ -1717,6 +1725,8 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qfiledevice.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QDateTime \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QFrame \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
 		ui_mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/QChartView \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCharts/qchartview.h \
@@ -1733,7 +1743,6 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsview.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qscrollarea.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qframe.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qgraphicsscene.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QAction \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QIcon \
@@ -1765,6 +1774,16 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPlainTextEdit \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qplaintextedit.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtextedit.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextcursor.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextformat.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qabstracttextdocumentlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextlayout.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qglyphrun.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qrawfont.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qfontdatabase.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPushButton \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qpushbutton.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
@@ -1787,8 +1806,6 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qaccessible_base.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QLineEdit \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlineedit.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextcursor.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextformat.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QHBoxLayout \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QTableWidgetItem \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QMetaObject \
@@ -1800,7 +1817,9 @@ release/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qmessagebox.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QColor
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QColor \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QScrollBar \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qscrollbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\..\mainwindow.cpp
 
 release/qrc_qml.o: release/qrc_qml.cpp 

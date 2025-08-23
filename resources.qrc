@@ -22,13 +22,17 @@
         <file>images/TelemetryLogo.png</file>
         <file>images/MapLogo.png</file>
         <file>images/ParameterLogo.png</file>
-        <file>images/paramButton.png</file>
         <file>images/ConnectButton.png</file>
         <file>images/DisconnectButton.png</file>
-        <file>images/EmergencyButton.png</file>
         <file>images/sendButton.png</file>
         <file>images/SettingsButton.png</file>
         <file>images/StopButton.png</file>
         <file>images/StartButton.png</file>
+        <file>images/paramButton.png</file>
+        <file>images/EmergencyButton.png</file>
+        <file>images/PWMLogo.png</file>
+        <file>images/IDALogo.png</file>
+        <file>images/IHALogo.png</file>
+        <file>images/Background5.png</file>
     </qresource>
 </RCC>

@@ -14,7 +14,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDateTime>
-
+#include <QFrame>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -43,7 +43,7 @@ private slots:
     void on_sendButton_clicked();
     void on_emergencyButton_clicked();
     void on_connectButton_clicked();
-    void on_sendParamButton_clicked();
+   // void on_sendParamButton_clicked();
     void handleDeleteButton();
     void handleItemChanged(QTableWidgetItem *item);
 
@@ -52,7 +52,8 @@ signals:
     void connectionStatusChanged(bool);
 
 private:
-
+    void addLogMessage(const QString &message, const QString &type = "info");
+    void processSpecialCommand(const QString &command);
     void updateMapPosition(double lat, double lon);
     void updateMapHeading(double heading);
 
@@ -64,9 +65,25 @@ private:
     QValueAxis    *axisX{nullptr};
     QValueAxis    *axisY{nullptr};
 
+    QChart        *speedChart2;
+    QSplineSeries *setPointSeries2;
+    QSplineSeries *actualSeries2;
+    QValueAxis    *axisX_2;
+    QValueAxis    *axisY_2;
+
+    QChart        *ThrusterChart;
+    QSplineSeries *setPointSeriesR;
+    QSplineSeries *actualSeriesR;
+    QValueAxis    *axisX_R;
+    QValueAxis    *axisY_R;
+
+    QFrame *remoteLamp;
+    QFrame *failsafeLamp;
+
 
     QChart*            pryChart;
     QSplineSeries*     yawSeries;
+    QSplineSeries   *setPointYaw;
     QValueAxis*        axisX_pry;
     QValueAxis*        axisY_pry;
 

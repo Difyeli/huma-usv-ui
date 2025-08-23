@@ -43,7 +43,7 @@ Item {
             sourceItem: Image {
                 id: arrow
                 source: "qrc:/icons/usv.png"
-                width: 32; height: 32
+                width: 16; height: 16
                 rotation: vehicleHeading
             }
         }
@@ -83,7 +83,7 @@ Item {
     Row {
         spacing: 4
         anchors.top: parent.top; anchors.right: parent.right; anchors.margins: 8
-        Button { text: "+"; onClicked: map.zoomLevel = Math.min(map.zoomLevel + 1, 20) }
+        Button { text: "+"; onClicked: map.zoomLevel = Math.min(map.zoomLevel + 1, 24) }
         Button { text: "–"; onClicked: map.zoomLevel = Math.max(map.zoomLevel - 1, 1) }
     }
 }
