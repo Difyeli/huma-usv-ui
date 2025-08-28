@@ -34,5 +34,13 @@
         <file>images/IDALogo.png</file>
         <file>images/IHALogo.png</file>
         <file>images/Background5.png</file>
+        <file>images/Frame.png</file>
+        <file>images/Add-NotSelected.png</file>
+        <file>images/Add-Selected.png</file>
+        <file>images/Buoy_R.png</file>
+        <file>images/Buoy_B.png</file>
+        <file>images/Buoy_G.png</file>
+        <file>images/TextLog.png</file>
+        <file>images/LLFrame.png</file>
     </qresource>
 </RCC>

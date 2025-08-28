@@ -46,6 +46,7 @@ private slots:
    // void on_sendParamButton_clicked();
     void handleDeleteButton();
     void handleItemChanged(QTableWidgetItem *item);
+    void on_addButton_clicked();
 
 signals:
     void telemetryReceived(const QByteArray &data);
@@ -56,6 +57,11 @@ private:
     void processSpecialCommand(const QString &command);
     void updateMapPosition(double lat, double lon);
     void updateMapHeading(double heading);
+    bool appendWaypointToQml(double lat, double lon);
+
+    QStringList pendingLogs;
+    QTimer *logFlushTimer = nullptr;
+
 
     Ui::MainWindow *ui;
     QSerialPort  *serial;

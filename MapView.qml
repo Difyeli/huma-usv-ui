@@ -20,6 +20,11 @@ Item {
             objectName: "waypointModel"
         }
 
+    function appendWaypoint(lat, lon) {
+        waypointModel.append({ lat: lat, lon: lon })
+    }
+
+
     Plugin { id: osmPlugin; name: "osm" }
 
 
@@ -55,11 +60,50 @@ Item {
             onPressed: {
                 if (mouse.button === Qt.RightButton) {
                     var c = map.toCoordinate(Qt.point(mouse.x, mouse.y))
-                    waypointModel.append({ lat: c.latitude, lon: c.longitude })
+                    // Sadece backend üzerinden ekle (tablo + harita tek yerden güncellensin)
                     backend.addWaypoint(c.latitude, c.longitude)
                 }
             }
         }
+
+        MouseArea {
+            id: mapDragArea
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            property var pressedPos
+            property var pressedCoord
+
+            onPressed: {
+                if (mouse.button === Qt.LeftButton) {
+                    pressedPos = Qt.point(mouse.x, mouse.y)
+                    pressedCoord = map.toCoordinate(pressedPos)
+                } else if (mouse.button === Qt.RightButton) {
+                    var c = map.toCoordinate(Qt.point(mouse.x, mouse.y))
+                    backend.addWaypoint(c.latitude, c.longitude)
+                }
+            }
+
+            onPositionChanged: {
+                if (mouse.buttons & Qt.LeftButton && pressedCoord) {
+                    var currentCoord = map.toCoordinate(Qt.point(mouse.x, mouse.y))
+
+                    var dx = pressedCoord.longitude - currentCoord.longitude
+                    var dy = pressedCoord.latitude - currentCoord.latitude
+
+                    // Yön değiştir ve kaydır
+                    map.center.latitude += dy
+                    map.center.longitude += dx
+                }
+            }
+
+            onReleased: {
+                pressedPos = null
+                pressedCoord = null
+            }
+        }
+
+
+
 
         // Modelden waypoint’leri haritaya bas
         MapItemView {

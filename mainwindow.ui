@@ -498,7 +498,7 @@
       <x>845</x>
       <y>50</y>
       <width>201</width>
-      <height>434</height>
+      <height>391</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -506,7 +506,7 @@
       <number>30</number>
      </property>
      <property name="verticalSpacing">
-      <number>16</number>
+      <number>21</number>
      </property>
      <item row="0" column="0">
       <widget class="QLabel" name="Yaw">
@@ -516,19 +516,19 @@
         </font>
        </property>
        <property name="text">
-        <string>Yaw:</string>
+        <string>packetCount:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLabel" name="Yaw_Data">
+      <widget class="QLabel" name="packetCount">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>0.01 °</string>
+        <string>-</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -536,26 +536,26 @@
       </widget>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="Direction">
+      <widget class="QLabel" name="label_35">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>SetPoint Yaw:</string>
+        <string>Battery Voltage:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLabel" name="Direction_Data">
+      <widget class="QLabel" name="batteryVoltage">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>0.01 °</string>
+        <string>-</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -563,26 +563,26 @@
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="GPS_Label2_2">
+      <widget class="QLabel" name="label_34">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>Longitute:</string>
+        <string>Quest State</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLabel" name="Longitude">
+      <widget class="QLabel" name="stageState">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>0.01 </string>
+        <string>-</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -590,26 +590,26 @@
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="GPS_Label2">
+      <widget class="QLabel" name="Voltage">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>Latitude:</string>
+        <string>SIV:</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QLabel" name="Latitude">
+      <widget class="QLabel" name="SIV_Data">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>0.01 </string>
+        <string>-</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -671,87 +671,6 @@
       </widget>
      </item>
      <item row="6" column="0">
-      <widget class="QLabel" name="SetPointLabel">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Set Point:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QLabel" name="SetPoint_Data">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>0.0 m/s</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="Speed">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Speed:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QLabel" name="Speed_Data">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>0.0 m/s</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_21">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>L_Setpoint</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="1">
-      <widget class="QLabel" name="SetPoint_Data2">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>-</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="0">
       <widget class="QLabel" name="label_23">
        <property name="font">
         <font>
@@ -759,11 +678,11 @@
         </font>
        </property>
        <property name="text">
-        <string>L_Thrusters</string>
+        <string>L_Thrusters:</string>
        </property>
       </widget>
      </item>
-     <item row="9" column="1">
+     <item row="6" column="1">
       <widget class="QLabel" name="Speed_Data2">
        <property name="font">
         <font>
@@ -778,20 +697,20 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
-      <widget class="QLabel" name="label_5">
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_15">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>R_Setpoint</string>
+        <string>R_Thrusters:</string>
        </property>
       </widget>
      </item>
-     <item row="10" column="1">
-      <widget class="QLabel" name="SetPoint_DataR">
+     <item row="7" column="1">
+      <widget class="QLabel" name="Speed_DataR">
        <property name="font">
         <font>
          <bold>true</bold>
@@ -805,20 +724,47 @@
        </property>
       </widget>
      </item>
-     <item row="11" column="0">
-      <widget class="QLabel" name="label_15">
+     <item row="8" column="0">
+      <widget class="QLabel" name="GPS_Label2_4">
        <property name="font">
         <font>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>R_Thrusters</string>
+        <string>GPS Time</string>
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
-      <widget class="QLabel" name="Speed_DataR">
+     <item row="8" column="1">
+      <widget class="QLabel" name="gpsTime">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="GPS_Label2_8">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Heading</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="bnoHeading">
        <property name="font">
         <font>
          <bold>true</bold>
@@ -1453,8 +1399,8 @@
      <rect>
       <x>323</x>
       <y>8</y>
-      <width>511</width>
-      <height>461</height>
+      <width>513</width>
+      <height>462</height>
      </rect>
     </property>
     <property name="text">
@@ -1473,7 +1419,7 @@
       <x>10</x>
       <y>9</y>
       <width>321</width>
-      <height>271</height>
+      <height>281</height>
      </rect>
     </property>
     <property name="text">
@@ -1490,7 +1436,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>15</y>
+      <y>14</y>
       <width>45</width>
       <height>28</height>
      </rect>
@@ -1542,7 +1488,7 @@
     <property name="geometry">
      <rect>
       <x>1314</x>
-      <y>60</y>
+      <y>50</y>
       <width>181</width>
       <height>101</height>
      </rect>
@@ -1562,7 +1508,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Bağlantı Durumu:</string>
+        <string>State:</string>
        </property>
       </widget>
      </item>
@@ -1574,7 +1520,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Pasif</string>
+        <string>Passive</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1616,7 +1562,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Baud Rate</string>
+        <string>Baud Rate:</string>
        </property>
       </widget>
      </item>
@@ -1641,7 +1587,7 @@
     <property name="geometry">
      <rect>
       <x>1314</x>
-      <y>160</y>
+      <y>147</y>
       <width>180</width>
       <height>41</height>
      </rect>
@@ -2203,7 +2149,7 @@
     <property name="geometry">
      <rect>
       <x>1314</x>
-      <y>200</y>
+      <y>183</y>
       <width>180</width>
       <height>41</height>
      </rect>
@@ -2711,7 +2657,7 @@
       <x>1290</x>
       <y>10</y>
       <width>231</width>
-      <height>451</height>
+      <height>258</height>
      </rect>
     </property>
     <property name="text">
@@ -2730,7 +2676,7 @@
       <x>830</x>
       <y>10</y>
       <width>231</width>
-      <height>451</height>
+      <height>452</height>
      </rect>
     </property>
     <property name="text">
@@ -2746,10 +2692,10 @@
    <widget class="QLabel" name="ConnectionLogo">
     <property name="geometry">
      <rect>
-      <x>1329</x>
-      <y>20</y>
+      <x>1335</x>
+      <y>15</y>
       <width>28</width>
-      <height>28</height>
+      <height>30</height>
      </rect>
     </property>
     <property name="text">
@@ -2766,9 +2712,9 @@
     <property name="geometry">
      <rect>
       <x>1351</x>
-      <y>23</y>
+      <y>15</y>
       <width>111</width>
-      <height>20</height>
+      <height>30</height>
      </rect>
     </property>
     <property name="palette">
@@ -2851,9 +2797,9 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>900</x>
-      <y>15</y>
-      <width>96</width>
+      <x>908</x>
+      <y>14</y>
+      <width>101</width>
       <height>29</height>
      </rect>
     </property>
@@ -2897,7 +2843,7 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>537</x>
       <y>15</y>
       <width>28</width>
       <height>28</height>
@@ -2935,8 +2881,8 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>880</x>
-      <y>15</y>
+      <x>878</x>
+      <y>14</y>
       <width>28</width>
       <height>28</height>
      </rect>
@@ -2945,7 +2891,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/images/IDALogo.png</pixmap>
+     <pixmap resource="resources.qrc">:/images/TelemetryLogo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -2976,7 +2922,7 @@
       <x>343</x>
       <y>43</y>
       <width>471</width>
-      <height>401</height>
+      <height>351</height>
      </rect>
     </property>
     <property name="cursor">
@@ -2992,7 +2938,7 @@
       <x>25</x>
       <y>50</y>
       <width>291</width>
-      <height>178</height>
+      <height>189</height>
      </rect>
     </property>
     <property name="palette">
@@ -3185,17 +3131,12 @@
       </color>
      </property>
     </column>
-    <column>
-     <property name="text">
-      <string>Add</string>
-     </property>
-    </column>
    </widget>
    <widget class="QPushButton" name="sendButton">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>230</y>
+      <y>241</y>
       <width>180</width>
       <height>40</height>
      </rect>
@@ -3261,7 +3202,7 @@
     <property name="geometry">
      <rect>
       <x>1314</x>
-      <y>240</y>
+      <y>219</y>
       <width>180</width>
       <height>41</height>
      </rect>
@@ -3364,7 +3305,7 @@
      <rect>
       <x>1090</x>
       <y>460</y>
-      <width>441</width>
+      <width>436</width>
       <height>311</height>
      </rect>
     </property>
@@ -3916,7 +3857,7 @@
    <widget class="QLabel" name="ConnectionLogo_2">
     <property name="geometry">
      <rect>
-      <x>1235</x>
+      <x>1236</x>
       <y>470</y>
       <width>28</width>
       <height>28</height>
@@ -4002,7 +3943,7 @@
    <widget class="QLabel" name="label_18">
     <property name="geometry">
      <rect>
-      <x>417</x>
+      <x>418</x>
       <y>460</y>
       <width>681</width>
       <height>311</height>
@@ -4139,45 +4080,6 @@ border-radius: 3px;
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="Voltage">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>870</y>
-      <width>27</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>SIV:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="SIV_Data">
-    <property name="geometry">
-     <rect>
-      <x>880</x>
-      <y>870</y>
-      <width>67</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>-</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_16">
     <property name="geometry">
      <rect>
@@ -4200,10 +4102,10 @@ border-radius: 3px;
    <widget class="QLabel" name="label_24">
     <property name="geometry">
      <rect>
-      <x>1160</x>
+      <x>1126</x>
       <y>14</y>
-      <width>41</width>
-      <height>29</height>
+      <width>101</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="palette">
@@ -4240,7 +4142,7 @@ border-radius: 3px;
      </font>
     </property>
     <property name="text">
-     <string>İHA</string>
+     <string>Telemetry</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -4249,7 +4151,7 @@ border-radius: 3px;
    <widget class="QLabel" name="label_25">
     <property name="geometry">
      <rect>
-      <x>1134</x>
+      <x>1109</x>
       <y>14</y>
       <width>28</width>
       <height>28</height>
@@ -4259,7 +4161,7 @@ border-radius: 3px;
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/images/IHALogo.png</pixmap>
+     <pixmap resource="resources.qrc">:/images/TelemetryLogo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -4287,7 +4189,7 @@ border-radius: 3px;
    <widget class="QLabel" name="label_27">
     <property name="geometry">
      <rect>
-      <x>689</x>
+      <x>692</x>
       <y>470</y>
       <width>28</width>
       <height>28</height>
@@ -4303,32 +4205,13 @@ border-radius: 3px;
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="textLog">
-    <property name="geometry">
-     <rect>
-      <x>24</x>
-      <y>307</y>
-      <width>293</width>
-      <height>144</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_28">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>321</width>
-      <height>181</height>
+      <x>12</x>
+      <y>285</y>
+      <width>317</width>
+      <height>176</height>
      </rect>
     </property>
     <property name="text">
@@ -4345,7 +4228,7 @@ border-radius: 3px;
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>278</y>
+      <y>290</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -4396,16 +4279,579 @@ border-radius: 3px;
    <widget class="QPushButton" name="addButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>234</y>
-      <width>31</width>
-      <height>29</height>
+      <x>650</x>
+      <y>405</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/images/Add-NotSelected.png</normaloff>:/images/Add-NotSelected.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>200</width>
+      <height>33</height>
+     </size>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="latEdit">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>410</y>
+      <width>104</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="lonEdit">
+    <property name="geometry">
+     <rect>
+      <x>543</x>
+      <y>410</y>
+      <width>104</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_30">
+    <property name="geometry">
+     <rect>
+      <x>1290</x>
+      <y>268</y>
+      <width>231</width>
+      <height>191</height>
      </rect>
     </property>
     <property name="text">
-     <string>+</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources.qrc">:/images/Background3.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label_31">
+    <property name="geometry">
+     <rect>
+      <x>1350</x>
+      <y>270</y>
+      <width>111</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>55</green>
+          <blue>72</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>55</green>
+          <blue>72</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>55</green>
+          <blue>72</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Text">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>45</red>
+          <green>55</green>
+          <blue>72</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled/>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Target</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignmentFlag::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="buoyColorLabel">
+    <property name="geometry">
+     <rect>
+      <x>1330</x>
+      <y>300</y>
+      <width>150</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_32">
+    <property name="geometry">
+     <rect>
+      <x>107</x>
+      <y>290</y>
+      <width>28</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources.qrc">:/images/TextLog.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textLog">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>320</y>
+      <width>281</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Shadow">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Shadow">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Shadow">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>113</red>
+          <green>226</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>1075</x>
+      <y>50</y>
+      <width>201</width>
+      <height>432</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_3">
+     <property name="horizontalSpacing">
+      <number>30</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>18</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="Yaw_2">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Pitch:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="Pitch_Data">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.01 °</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="Direction_2">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Roll:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="roll_Data">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.01 °</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="GPS_Label2_3">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Yaw:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="Yaw_Data">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.01 °</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="Direction">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>SetPoint Yaw:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="Direction_Data">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.01 °</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="SetPointLabel">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Speet Setpoint:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="SetPoint_Data">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.0 m/s</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="Speed">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Current Speed:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="Speed_Data">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.0 m/s</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="GPS_Label2">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Latitude:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLabel" name="Latitude">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.01 </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="GPS_Label2_2">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Longitute:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="Longitude">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>0.01 </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QLabel" name="linX">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="GPS_Label2_5">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>linX</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="linY">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="GPS_Label2_6">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>linY</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QLabel" name="linZ">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>-</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="GPS_Label2_7">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>linZ</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>label_4</zorder>
    <zorder>label_3</zorder>
    <zorder>label_28</zorder>
    <zorder>label_16</zorder>
@@ -4418,7 +4864,6 @@ border-radius: 3px;
    <zorder>label_14</zorder>
    <zorder>formLayoutWidget</zorder>
    <zorder>SpeedGraph</zorder>
-   <zorder>label_4</zorder>
    <zorder>MapLabel</zorder>
    <zorder>formLayoutWidget_2</zorder>
    <zorder>connectButton</zorder>
@@ -4444,14 +4889,19 @@ border-radius: 3px;
    <zorder>remoteLamp</zorder>
    <zorder>failsafeLamp</zorder>
    <zorder>label_22</zorder>
-   <zorder>Voltage</zorder>
-   <zorder>SIV_Data</zorder>
    <zorder>label_24</zorder>
    <zorder>label_25</zorder>
    <zorder>label_27</zorder>
-   <zorder>textLog</zorder>
    <zorder>label_29</zorder>
    <zorder>addButton</zorder>
+   <zorder>latEdit</zorder>
+   <zorder>lonEdit</zorder>
+   <zorder>label_30</zorder>
+   <zorder>label_31</zorder>
+   <zorder>buoyColorLabel</zorder>
+   <zorder>label_32</zorder>
+   <zorder>textLog</zorder>
+   <zorder>formLayoutWidget_3</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionMainMenu">

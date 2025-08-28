@@ -20,10 +20,10 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -37,29 +37,25 @@ public:
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
     QLabel *Yaw;
-    QLabel *Yaw_Data;
-    QLabel *Direction;
-    QLabel *Direction_Data;
-    QLabel *GPS_Label2_2;
-    QLabel *Longitude;
-    QLabel *GPS_Label2;
-    QLabel *Latitude;
+    QLabel *packetCount;
+    QLabel *label_35;
+    QLabel *batteryVoltage;
+    QLabel *label_34;
+    QLabel *stageState;
+    QLabel *Voltage;
+    QLabel *SIV_Data;
     QLabel *SicaklikLabel;
     QLabel *RemoteActive_Data;
     QLabel *label_20;
     QLabel *Failsafe_Data;
-    QLabel *SetPointLabel;
-    QLabel *SetPoint_Data;
-    QLabel *Speed;
-    QLabel *Speed_Data;
-    QLabel *label_21;
-    QLabel *SetPoint_Data2;
     QLabel *label_23;
     QLabel *Speed_Data2;
-    QLabel *label_5;
-    QLabel *SetPoint_DataR;
     QLabel *label_15;
     QLabel *Speed_DataR;
+    QLabel *GPS_Label2_4;
+    QLabel *gpsTime;
+    QLabel *GPS_Label2_8;
+    QLabel *bnoHeading;
     QLabel *SpeedFrame;
     QLabel *label;
     QChartView *SpeedGraph;
@@ -103,17 +99,45 @@ public:
     QFrame *remoteLamp;
     QFrame *failsafeLamp;
     QLabel *label_22;
-    QLabel *Voltage;
-    QLabel *SIV_Data;
     QLabel *label_16;
     QLabel *label_24;
     QLabel *label_25;
     QLabel *label_26;
     QLabel *label_27;
-    QPlainTextEdit *textLog;
     QLabel *label_28;
     QLabel *label_29;
     QPushButton *addButton;
+    QTextEdit *latEdit;
+    QTextEdit *lonEdit;
+    QLabel *label_30;
+    QLabel *label_31;
+    QLabel *buoyColorLabel;
+    QLabel *label_32;
+    QTextEdit *textLog;
+    QWidget *formLayoutWidget_3;
+    QFormLayout *formLayout_3;
+    QLabel *Yaw_2;
+    QLabel *Pitch_Data;
+    QLabel *Direction_2;
+    QLabel *roll_Data;
+    QLabel *GPS_Label2_3;
+    QLabel *Yaw_Data;
+    QLabel *Direction;
+    QLabel *Direction_Data;
+    QLabel *SetPointLabel;
+    QLabel *SetPoint_Data;
+    QLabel *Speed;
+    QLabel *Speed_Data;
+    QLabel *GPS_Label2;
+    QLabel *Latitude;
+    QLabel *GPS_Label2_2;
+    QLabel *Longitude;
+    QLabel *linX;
+    QLabel *GPS_Label2_5;
+    QLabel *linY;
+    QLabel *GPS_Label2_6;
+    QLabel *linZ;
+    QLabel *GPS_Label2_7;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -215,11 +239,11 @@ public:
         centralwidget->setAutoFillBackground(true);
         formLayoutWidget = new QWidget(centralwidget);
         formLayoutWidget->setObjectName("formLayoutWidget");
-        formLayoutWidget->setGeometry(QRect(845, 50, 201, 434));
+        formLayoutWidget->setGeometry(QRect(845, 50, 201, 391));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName("formLayout");
         formLayout->setHorizontalSpacing(30);
-        formLayout->setVerticalSpacing(16);
+        formLayout->setVerticalSpacing(21);
         formLayout->setContentsMargins(0, 0, 0, 0);
         Yaw = new QLabel(formLayoutWidget);
         Yaw->setObjectName("Yaw");
@@ -229,51 +253,51 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, Yaw);
 
-        Yaw_Data = new QLabel(formLayoutWidget);
-        Yaw_Data->setObjectName("Yaw_Data");
-        Yaw_Data->setFont(font);
-        Yaw_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        packetCount = new QLabel(formLayoutWidget);
+        packetCount->setObjectName("packetCount");
+        packetCount->setFont(font);
+        packetCount->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, Yaw_Data);
+        formLayout->setWidget(0, QFormLayout::FieldRole, packetCount);
 
-        Direction = new QLabel(formLayoutWidget);
-        Direction->setObjectName("Direction");
-        Direction->setFont(font);
+        label_35 = new QLabel(formLayoutWidget);
+        label_35->setObjectName("label_35");
+        label_35->setFont(font);
 
-        formLayout->setWidget(1, QFormLayout::LabelRole, Direction);
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_35);
 
-        Direction_Data = new QLabel(formLayoutWidget);
-        Direction_Data->setObjectName("Direction_Data");
-        Direction_Data->setFont(font);
-        Direction_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        batteryVoltage = new QLabel(formLayoutWidget);
+        batteryVoltage->setObjectName("batteryVoltage");
+        batteryVoltage->setFont(font);
+        batteryVoltage->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, Direction_Data);
+        formLayout->setWidget(1, QFormLayout::FieldRole, batteryVoltage);
 
-        GPS_Label2_2 = new QLabel(formLayoutWidget);
-        GPS_Label2_2->setObjectName("GPS_Label2_2");
-        GPS_Label2_2->setFont(font);
+        label_34 = new QLabel(formLayoutWidget);
+        label_34->setObjectName("label_34");
+        label_34->setFont(font);
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, GPS_Label2_2);
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_34);
 
-        Longitude = new QLabel(formLayoutWidget);
-        Longitude->setObjectName("Longitude");
-        Longitude->setFont(font);
-        Longitude->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        stageState = new QLabel(formLayoutWidget);
+        stageState->setObjectName("stageState");
+        stageState->setFont(font);
+        stageState->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, Longitude);
+        formLayout->setWidget(2, QFormLayout::FieldRole, stageState);
 
-        GPS_Label2 = new QLabel(formLayoutWidget);
-        GPS_Label2->setObjectName("GPS_Label2");
-        GPS_Label2->setFont(font);
+        Voltage = new QLabel(formLayoutWidget);
+        Voltage->setObjectName("Voltage");
+        Voltage->setFont(font);
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, GPS_Label2);
+        formLayout->setWidget(3, QFormLayout::LabelRole, Voltage);
 
-        Latitude = new QLabel(formLayoutWidget);
-        Latitude->setObjectName("Latitude");
-        Latitude->setFont(font);
-        Latitude->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        SIV_Data = new QLabel(formLayoutWidget);
+        SIV_Data->setObjectName("SIV_Data");
+        SIV_Data->setFont(font);
+        SIV_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, Latitude);
+        formLayout->setWidget(3, QFormLayout::FieldRole, SIV_Data);
 
         SicaklikLabel = new QLabel(formLayoutWidget);
         SicaklikLabel->setObjectName("SicaklikLabel");
@@ -301,83 +325,57 @@ public:
 
         formLayout->setWidget(5, QFormLayout::FieldRole, Failsafe_Data);
 
-        SetPointLabel = new QLabel(formLayoutWidget);
-        SetPointLabel->setObjectName("SetPointLabel");
-        SetPointLabel->setFont(font);
-
-        formLayout->setWidget(6, QFormLayout::LabelRole, SetPointLabel);
-
-        SetPoint_Data = new QLabel(formLayoutWidget);
-        SetPoint_Data->setObjectName("SetPoint_Data");
-        SetPoint_Data->setFont(font);
-        SetPoint_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
-
-        formLayout->setWidget(6, QFormLayout::FieldRole, SetPoint_Data);
-
-        Speed = new QLabel(formLayoutWidget);
-        Speed->setObjectName("Speed");
-        Speed->setFont(font);
-
-        formLayout->setWidget(7, QFormLayout::LabelRole, Speed);
-
-        Speed_Data = new QLabel(formLayoutWidget);
-        Speed_Data->setObjectName("Speed_Data");
-        Speed_Data->setFont(font);
-        Speed_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
-
-        formLayout->setWidget(7, QFormLayout::FieldRole, Speed_Data);
-
-        label_21 = new QLabel(formLayoutWidget);
-        label_21->setObjectName("label_21");
-        label_21->setFont(font);
-
-        formLayout->setWidget(8, QFormLayout::LabelRole, label_21);
-
-        SetPoint_Data2 = new QLabel(formLayoutWidget);
-        SetPoint_Data2->setObjectName("SetPoint_Data2");
-        SetPoint_Data2->setFont(font);
-        SetPoint_Data2->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
-
-        formLayout->setWidget(8, QFormLayout::FieldRole, SetPoint_Data2);
-
         label_23 = new QLabel(formLayoutWidget);
         label_23->setObjectName("label_23");
         label_23->setFont(font);
 
-        formLayout->setWidget(9, QFormLayout::LabelRole, label_23);
+        formLayout->setWidget(6, QFormLayout::LabelRole, label_23);
 
         Speed_Data2 = new QLabel(formLayoutWidget);
         Speed_Data2->setObjectName("Speed_Data2");
         Speed_Data2->setFont(font);
         Speed_Data2->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(9, QFormLayout::FieldRole, Speed_Data2);
-
-        label_5 = new QLabel(formLayoutWidget);
-        label_5->setObjectName("label_5");
-        label_5->setFont(font);
-
-        formLayout->setWidget(10, QFormLayout::LabelRole, label_5);
-
-        SetPoint_DataR = new QLabel(formLayoutWidget);
-        SetPoint_DataR->setObjectName("SetPoint_DataR");
-        SetPoint_DataR->setFont(font);
-        SetPoint_DataR->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
-
-        formLayout->setWidget(10, QFormLayout::FieldRole, SetPoint_DataR);
+        formLayout->setWidget(6, QFormLayout::FieldRole, Speed_Data2);
 
         label_15 = new QLabel(formLayoutWidget);
         label_15->setObjectName("label_15");
         label_15->setFont(font);
 
-        formLayout->setWidget(11, QFormLayout::LabelRole, label_15);
+        formLayout->setWidget(7, QFormLayout::LabelRole, label_15);
 
         Speed_DataR = new QLabel(formLayoutWidget);
         Speed_DataR->setObjectName("Speed_DataR");
         Speed_DataR->setFont(font);
         Speed_DataR->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        formLayout->setWidget(11, QFormLayout::FieldRole, Speed_DataR);
+        formLayout->setWidget(7, QFormLayout::FieldRole, Speed_DataR);
+
+        GPS_Label2_4 = new QLabel(formLayoutWidget);
+        GPS_Label2_4->setObjectName("GPS_Label2_4");
+        GPS_Label2_4->setFont(font);
+
+        formLayout->setWidget(8, QFormLayout::LabelRole, GPS_Label2_4);
+
+        gpsTime = new QLabel(formLayoutWidget);
+        gpsTime->setObjectName("gpsTime");
+        gpsTime->setFont(font);
+        gpsTime->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout->setWidget(8, QFormLayout::FieldRole, gpsTime);
+
+        GPS_Label2_8 = new QLabel(formLayoutWidget);
+        GPS_Label2_8->setObjectName("GPS_Label2_8");
+        GPS_Label2_8->setFont(font);
+
+        formLayout->setWidget(9, QFormLayout::LabelRole, GPS_Label2_8);
+
+        bnoHeading = new QLabel(formLayoutWidget);
+        bnoHeading->setObjectName("bnoHeading");
+        bnoHeading->setFont(font);
+        bnoHeading->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout->setWidget(9, QFormLayout::FieldRole, bnoHeading);
 
         SpeedFrame = new QLabel(centralwidget);
         SpeedFrame->setObjectName("SpeedFrame");
@@ -490,17 +488,17 @@ public:
         Setpoint_txt->setFont(font2);
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(323, 8, 511, 461));
+        label_4->setGeometry(QRect(323, 8, 513, 462));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/images/Background5.png")));
         label_4->setScaledContents(true);
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(10, 9, 321, 271));
+        label_6->setGeometry(QRect(10, 9, 321, 281));
         label_6->setPixmap(QPixmap(QString::fromUtf8(":/images/Background5.png")));
         label_6->setScaledContents(true);
         MapLabel = new QLabel(centralwidget);
         MapLabel->setObjectName("MapLabel");
-        MapLabel->setGeometry(QRect(560, 15, 45, 28));
+        MapLabel->setGeometry(QRect(560, 14, 45, 28));
         QPalette palette4;
         palette4.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette4.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -510,7 +508,7 @@ public:
         MapLabel->setAlignment(Qt::AlignmentFlag::AlignCenter);
         formLayoutWidget_2 = new QWidget(centralwidget);
         formLayoutWidget_2->setObjectName("formLayoutWidget_2");
-        formLayoutWidget_2->setGeometry(QRect(1314, 60, 181, 101));
+        formLayoutWidget_2->setGeometry(QRect(1314, 50, 181, 101));
         formLayout_2 = new QFormLayout(formLayoutWidget_2);
         formLayout_2->setObjectName("formLayout_2");
         formLayout_2->setHorizontalSpacing(15);
@@ -557,7 +555,7 @@ public:
 
         connectButton = new QPushButton(centralwidget);
         connectButton->setObjectName("connectButton");
-        connectButton->setGeometry(QRect(1314, 160, 180, 41));
+        connectButton->setGeometry(QRect(1314, 147, 180, 41));
         QPalette palette5;
         palette5.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette5.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -645,7 +643,7 @@ public:
         label_7->setAlignment(Qt::AlignmentFlag::AlignCenter);
         settingsButton = new QPushButton(centralwidget);
         settingsButton->setObjectName("settingsButton");
-        settingsButton->setGeometry(QRect(1314, 200, 180, 41));
+        settingsButton->setGeometry(QRect(1314, 183, 180, 41));
         QPalette palette7;
         palette7.setBrush(QPalette::Active, QPalette::WindowText, brush);
         palette7.setBrush(QPalette::Active, QPalette::Button, brush2);
@@ -737,22 +735,22 @@ public:
         settingsButton->setFlat(true);
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(1290, 10, 231, 451));
+        label_3->setGeometry(QRect(1290, 10, 231, 258));
         label_3->setPixmap(QPixmap(QString::fromUtf8(":/images/Background1.png")));
         label_3->setScaledContents(true);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(830, 10, 231, 451));
+        label_2->setGeometry(QRect(830, 10, 231, 452));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/images/Background1.png")));
         label_2->setScaledContents(true);
         ConnectionLogo = new QLabel(centralwidget);
         ConnectionLogo->setObjectName("ConnectionLogo");
-        ConnectionLogo->setGeometry(QRect(1329, 20, 28, 28));
+        ConnectionLogo->setGeometry(QRect(1335, 15, 28, 30));
         ConnectionLogo->setPixmap(QPixmap(QString::fromUtf8(":/images/ConnectionLogo.png")));
         ConnectionLogo->setScaledContents(true);
         label_9 = new QLabel(centralwidget);
         label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(1351, 23, 111, 20));
+        label_9->setGeometry(QRect(1351, 15, 111, 30));
         QPalette palette8;
         palette8.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette8.setBrush(QPalette::Active, QPalette::Text, brush9);
@@ -768,7 +766,7 @@ public:
         label_8->setScaledContents(true);
         label_10 = new QLabel(centralwidget);
         label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(900, 15, 96, 29));
+        label_10->setGeometry(QRect(908, 14, 101, 29));
         QPalette palette9;
         palette9.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette9.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -776,7 +774,7 @@ public:
         label_10->setFont(font1);
         label_11 = new QLabel(centralwidget);
         label_11->setObjectName("label_11");
-        label_11->setGeometry(QRect(530, 15, 28, 28));
+        label_11->setGeometry(QRect(537, 15, 28, 28));
         label_11->setPixmap(QPixmap(QString::fromUtf8(":/images/MapLogo.png")));
         label_11->setScaledContents(true);
         label_12 = new QLabel(centralwidget);
@@ -786,8 +784,8 @@ public:
         label_12->setScaledContents(true);
         label_13 = new QLabel(centralwidget);
         label_13->setObjectName("label_13");
-        label_13->setGeometry(QRect(880, 15, 28, 28));
-        label_13->setPixmap(QPixmap(QString::fromUtf8(":/images/IDALogo.png")));
+        label_13->setGeometry(QRect(878, 14, 28, 28));
+        label_13->setPixmap(QPixmap(QString::fromUtf8(":/images/TelemetryLogo.png")));
         label_13->setScaledContents(true);
         label_14 = new QLabel(centralwidget);
         label_14->setObjectName("label_14");
@@ -796,12 +794,12 @@ public:
         label_14->setScaledContents(true);
         mapQuickWidget = new QQuickWidget(centralwidget);
         mapQuickWidget->setObjectName("mapQuickWidget");
-        mapQuickWidget->setGeometry(QRect(343, 43, 471, 401));
+        mapQuickWidget->setGeometry(QRect(343, 43, 471, 351));
         mapQuickWidget->setCursor(QCursor(Qt::CursorShape::CrossCursor));
         mapQuickWidget->setResizeMode(QQuickWidget::ResizeMode::SizeRootObjectToView);
         questTable = new QTableWidget(centralwidget);
-        if (questTable->columnCount() < 4)
-            questTable->setColumnCount(4);
+        if (questTable->columnCount() < 3)
+            questTable->setColumnCount(3);
         QFont font3;
         font3.setBold(true);
         font3.setItalic(true);
@@ -817,10 +815,8 @@ public:
         __qtablewidgetitem2->setFont(font3);
         __qtablewidgetitem2->setBackground(QColor(113, 226, 217));
         questTable->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        questTable->setHorizontalHeaderItem(3, __qtablewidgetitem3);
         questTable->setObjectName("questTable");
-        questTable->setGeometry(QRect(25, 50, 291, 178));
+        questTable->setGeometry(QRect(25, 50, 291, 189));
         QPalette palette10;
         QBrush brush22(QColor(113, 226, 217, 255));
         brush22.setStyle(Qt::SolidPattern);
@@ -845,7 +841,7 @@ public:
         questTable->horizontalHeader()->setStretchLastSection(false);
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName("sendButton");
-        sendButton->setGeometry(QRect(80, 230, 180, 40));
+        sendButton->setGeometry(QRect(80, 241, 180, 40));
         QPalette palette11;
         palette11.setBrush(QPalette::Active, QPalette::Button, brush2);
         palette11.setBrush(QPalette::Inactive, QPalette::Button, brush2);
@@ -859,7 +855,7 @@ public:
         sendButton->setFlat(true);
         emergencyButton = new QPushButton(centralwidget);
         emergencyButton->setObjectName("emergencyButton");
-        emergencyButton->setGeometry(QRect(1314, 240, 180, 41));
+        emergencyButton->setGeometry(QRect(1314, 219, 180, 41));
         QPalette palette12;
         palette12.setBrush(QPalette::Active, QPalette::Button, brush2);
         palette12.setBrush(QPalette::Active, QPalette::Window, brush2);
@@ -877,7 +873,7 @@ public:
         emergencyButton->setFlat(true);
         label_17 = new QLabel(centralwidget);
         label_17->setObjectName("label_17");
-        label_17->setGeometry(QRect(1090, 460, 441, 311));
+        label_17->setGeometry(QRect(1090, 460, 436, 311));
         label_17->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
         label_17->setScaledContents(true);
         PRYGraph = new QChartView(centralwidget);
@@ -961,7 +957,7 @@ public:
         Setpoint_txt_2->setFont(font2);
         ConnectionLogo_2 = new QLabel(centralwidget);
         ConnectionLogo_2->setObjectName("ConnectionLogo_2");
-        ConnectionLogo_2->setGeometry(QRect(1235, 470, 28, 28));
+        ConnectionLogo_2->setGeometry(QRect(1236, 470, 28, 28));
         ConnectionLogo_2->setPixmap(QPixmap(QString::fromUtf8(":/images/DirectionLogo.png")));
         ConnectionLogo_2->setScaledContents(true);
         label_19 = new QLabel(centralwidget);
@@ -977,7 +973,7 @@ public:
         label_19->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label_18 = new QLabel(centralwidget);
         label_18->setObjectName("label_18");
-        label_18->setGeometry(QRect(417, 460, 681, 311));
+        label_18->setGeometry(QRect(418, 460, 681, 311));
         label_18->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_18->setScaledContents(true);
         ThrusterChart = new QChartView(centralwidget);
@@ -1012,15 +1008,6 @@ public:
         label_22->setPalette(palette16);
         label_22->setFont(font1);
         label_22->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        Voltage = new QLabel(centralwidget);
-        Voltage->setObjectName("Voltage");
-        Voltage->setGeometry(QRect(860, 870, 27, 20));
-        Voltage->setFont(font);
-        SIV_Data = new QLabel(centralwidget);
-        SIV_Data->setObjectName("SIV_Data");
-        SIV_Data->setGeometry(QRect(880, 870, 67, 20));
-        SIV_Data->setFont(font);
-        SIV_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         label_16 = new QLabel(centralwidget);
         label_16->setObjectName("label_16");
         label_16->setGeometry(QRect(1060, 10, 231, 451));
@@ -1028,7 +1015,7 @@ public:
         label_16->setScaledContents(true);
         label_24 = new QLabel(centralwidget);
         label_24->setObjectName("label_24");
-        label_24->setGeometry(QRect(1160, 14, 41, 29));
+        label_24->setGeometry(QRect(1126, 14, 101, 30));
         QPalette palette17;
         palette17.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette17.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -1037,8 +1024,8 @@ public:
         label_24->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label_25 = new QLabel(centralwidget);
         label_25->setObjectName("label_25");
-        label_25->setGeometry(QRect(1134, 14, 28, 28));
-        label_25->setPixmap(QPixmap(QString::fromUtf8(":/images/IHALogo.png")));
+        label_25->setGeometry(QRect(1109, 14, 28, 28));
+        label_25->setPixmap(QPixmap(QString::fromUtf8(":/images/TelemetryLogo.png")));
         label_25->setScaledContents(true);
         label_26 = new QLabel(centralwidget);
         label_26->setObjectName("label_26");
@@ -1047,22 +1034,17 @@ public:
         label_26->setScaledContents(true);
         label_27 = new QLabel(centralwidget);
         label_27->setObjectName("label_27");
-        label_27->setGeometry(QRect(689, 470, 28, 28));
+        label_27->setGeometry(QRect(692, 470, 28, 28));
         label_27->setPixmap(QPixmap(QString::fromUtf8(":/images/PWMLogo.png")));
         label_27->setScaledContents(true);
-        textLog = new QPlainTextEdit(centralwidget);
-        textLog->setObjectName("textLog");
-        textLog->setGeometry(QRect(24, 307, 293, 144));
-        textLog->setFont(font2);
-        textLog->setReadOnly(true);
         label_28 = new QLabel(centralwidget);
         label_28->setObjectName("label_28");
-        label_28->setGeometry(QRect(10, 280, 321, 181));
+        label_28->setGeometry(QRect(12, 285, 317, 176));
         label_28->setPixmap(QPixmap(QString::fromUtf8(":/images/Background2.png")));
         label_28->setScaledContents(true);
         label_29 = new QLabel(centralwidget);
         label_29->setObjectName("label_29");
-        label_29->setGeometry(QRect(120, 278, 101, 31));
+        label_29->setGeometry(QRect(120, 290, 101, 31));
         QPalette palette18;
         palette18.setBrush(QPalette::Active, QPalette::WindowText, brush9);
         palette18.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
@@ -1072,8 +1054,211 @@ public:
         label_29->setAlignment(Qt::AlignmentFlag::AlignCenter);
         addButton = new QPushButton(centralwidget);
         addButton->setObjectName("addButton");
-        addButton->setGeometry(QRect(270, 234, 31, 29));
+        addButton->setGeometry(QRect(650, 405, 81, 41));
+        QPalette palette19;
+        palette19.setBrush(QPalette::Active, QPalette::Button, brush2);
+        palette19.setBrush(QPalette::Inactive, QPalette::Button, brush2);
+        palette19.setBrush(QPalette::Disabled, QPalette::Button, brush2);
+        addButton->setPalette(palette19);
+        addButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/images/Add-NotSelected.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        addButton->setIcon(icon4);
+        addButton->setIconSize(QSize(200, 33));
+        addButton->setFlat(true);
+        latEdit = new QTextEdit(centralwidget);
+        latEdit->setObjectName("latEdit");
+        latEdit->setGeometry(QRect(430, 410, 104, 31));
+        latEdit->setAutoFillBackground(false);
+        lonEdit = new QTextEdit(centralwidget);
+        lonEdit->setObjectName("lonEdit");
+        lonEdit->setGeometry(QRect(543, 410, 104, 31));
+        label_30 = new QLabel(centralwidget);
+        label_30->setObjectName("label_30");
+        label_30->setGeometry(QRect(1290, 268, 231, 191));
+        label_30->setPixmap(QPixmap(QString::fromUtf8(":/images/Background3.png")));
+        label_30->setScaledContents(true);
+        label_31 = new QLabel(centralwidget);
+        label_31->setObjectName("label_31");
+        label_31->setGeometry(QRect(1350, 270, 111, 30));
+        QPalette palette20;
+        palette20.setBrush(QPalette::Active, QPalette::WindowText, brush9);
+        palette20.setBrush(QPalette::Active, QPalette::Text, brush9);
+        palette20.setBrush(QPalette::Inactive, QPalette::WindowText, brush9);
+        palette20.setBrush(QPalette::Inactive, QPalette::Text, brush9);
+        label_31->setPalette(palette20);
+        label_31->setFont(font1);
+        label_31->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        buoyColorLabel = new QLabel(centralwidget);
+        buoyColorLabel->setObjectName("buoyColorLabel");
+        buoyColorLabel->setGeometry(QRect(1330, 300, 150, 150));
+        label_32 = new QLabel(centralwidget);
+        label_32->setObjectName("label_32");
+        label_32->setGeometry(QRect(107, 290, 28, 28));
+        label_32->setPixmap(QPixmap(QString::fromUtf8(":/images/TextLog.png")));
+        label_32->setScaledContents(true);
+        textLog = new QTextEdit(centralwidget);
+        textLog->setObjectName("textLog");
+        textLog->setGeometry(QRect(30, 320, 281, 131));
+        QPalette palette21;
+        palette21.setBrush(QPalette::Active, QPalette::Shadow, brush22);
+        palette21.setBrush(QPalette::Inactive, QPalette::Shadow, brush22);
+        palette21.setBrush(QPalette::Disabled, QPalette::Shadow, brush22);
+        textLog->setPalette(palette21);
+        textLog->setFont(font2);
+        formLayoutWidget_3 = new QWidget(centralwidget);
+        formLayoutWidget_3->setObjectName("formLayoutWidget_3");
+        formLayoutWidget_3->setGeometry(QRect(1075, 50, 201, 432));
+        formLayout_3 = new QFormLayout(formLayoutWidget_3);
+        formLayout_3->setObjectName("formLayout_3");
+        formLayout_3->setHorizontalSpacing(30);
+        formLayout_3->setVerticalSpacing(18);
+        formLayout_3->setContentsMargins(0, 0, 0, 0);
+        Yaw_2 = new QLabel(formLayoutWidget_3);
+        Yaw_2->setObjectName("Yaw_2");
+        Yaw_2->setFont(font);
+
+        formLayout_3->setWidget(0, QFormLayout::LabelRole, Yaw_2);
+
+        Pitch_Data = new QLabel(formLayoutWidget_3);
+        Pitch_Data->setObjectName("Pitch_Data");
+        Pitch_Data->setFont(font);
+        Pitch_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(0, QFormLayout::FieldRole, Pitch_Data);
+
+        Direction_2 = new QLabel(formLayoutWidget_3);
+        Direction_2->setObjectName("Direction_2");
+        Direction_2->setFont(font);
+
+        formLayout_3->setWidget(1, QFormLayout::LabelRole, Direction_2);
+
+        roll_Data = new QLabel(formLayoutWidget_3);
+        roll_Data->setObjectName("roll_Data");
+        roll_Data->setFont(font);
+        roll_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(1, QFormLayout::FieldRole, roll_Data);
+
+        GPS_Label2_3 = new QLabel(formLayoutWidget_3);
+        GPS_Label2_3->setObjectName("GPS_Label2_3");
+        GPS_Label2_3->setFont(font);
+
+        formLayout_3->setWidget(2, QFormLayout::LabelRole, GPS_Label2_3);
+
+        Yaw_Data = new QLabel(formLayoutWidget_3);
+        Yaw_Data->setObjectName("Yaw_Data");
+        Yaw_Data->setFont(font);
+        Yaw_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(2, QFormLayout::FieldRole, Yaw_Data);
+
+        Direction = new QLabel(formLayoutWidget_3);
+        Direction->setObjectName("Direction");
+        Direction->setFont(font);
+
+        formLayout_3->setWidget(3, QFormLayout::LabelRole, Direction);
+
+        Direction_Data = new QLabel(formLayoutWidget_3);
+        Direction_Data->setObjectName("Direction_Data");
+        Direction_Data->setFont(font);
+        Direction_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(3, QFormLayout::FieldRole, Direction_Data);
+
+        SetPointLabel = new QLabel(formLayoutWidget_3);
+        SetPointLabel->setObjectName("SetPointLabel");
+        SetPointLabel->setFont(font);
+
+        formLayout_3->setWidget(4, QFormLayout::LabelRole, SetPointLabel);
+
+        SetPoint_Data = new QLabel(formLayoutWidget_3);
+        SetPoint_Data->setObjectName("SetPoint_Data");
+        SetPoint_Data->setFont(font);
+        SetPoint_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(4, QFormLayout::FieldRole, SetPoint_Data);
+
+        Speed = new QLabel(formLayoutWidget_3);
+        Speed->setObjectName("Speed");
+        Speed->setFont(font);
+
+        formLayout_3->setWidget(5, QFormLayout::LabelRole, Speed);
+
+        Speed_Data = new QLabel(formLayoutWidget_3);
+        Speed_Data->setObjectName("Speed_Data");
+        Speed_Data->setFont(font);
+        Speed_Data->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(5, QFormLayout::FieldRole, Speed_Data);
+
+        GPS_Label2 = new QLabel(formLayoutWidget_3);
+        GPS_Label2->setObjectName("GPS_Label2");
+        GPS_Label2->setFont(font);
+
+        formLayout_3->setWidget(6, QFormLayout::LabelRole, GPS_Label2);
+
+        Latitude = new QLabel(formLayoutWidget_3);
+        Latitude->setObjectName("Latitude");
+        Latitude->setFont(font);
+        Latitude->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(6, QFormLayout::FieldRole, Latitude);
+
+        GPS_Label2_2 = new QLabel(formLayoutWidget_3);
+        GPS_Label2_2->setObjectName("GPS_Label2_2");
+        GPS_Label2_2->setFont(font);
+
+        formLayout_3->setWidget(7, QFormLayout::LabelRole, GPS_Label2_2);
+
+        Longitude = new QLabel(formLayoutWidget_3);
+        Longitude->setObjectName("Longitude");
+        Longitude->setFont(font);
+        Longitude->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(7, QFormLayout::FieldRole, Longitude);
+
+        linX = new QLabel(formLayoutWidget_3);
+        linX->setObjectName("linX");
+        linX->setFont(font);
+        linX->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(8, QFormLayout::FieldRole, linX);
+
+        GPS_Label2_5 = new QLabel(formLayoutWidget_3);
+        GPS_Label2_5->setObjectName("GPS_Label2_5");
+        GPS_Label2_5->setFont(font);
+
+        formLayout_3->setWidget(8, QFormLayout::LabelRole, GPS_Label2_5);
+
+        linY = new QLabel(formLayoutWidget_3);
+        linY->setObjectName("linY");
+        linY->setFont(font);
+        linY->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(9, QFormLayout::FieldRole, linY);
+
+        GPS_Label2_6 = new QLabel(formLayoutWidget_3);
+        GPS_Label2_6->setObjectName("GPS_Label2_6");
+        GPS_Label2_6->setFont(font);
+
+        formLayout_3->setWidget(9, QFormLayout::LabelRole, GPS_Label2_6);
+
+        linZ = new QLabel(formLayoutWidget_3);
+        linZ->setObjectName("linZ");
+        linZ->setFont(font);
+        linZ->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        formLayout_3->setWidget(10, QFormLayout::FieldRole, linZ);
+
+        GPS_Label2_7 = new QLabel(formLayoutWidget_3);
+        GPS_Label2_7->setObjectName("GPS_Label2_7");
+        GPS_Label2_7->setFont(font);
+
+        formLayout_3->setWidget(10, QFormLayout::LabelRole, GPS_Label2_7);
+
         MainWindow->setCentralWidget(centralwidget);
+        label_4->raise();
         label_3->raise();
         label_28->raise();
         label_16->raise();
@@ -1086,7 +1271,6 @@ public:
         label_14->raise();
         formLayoutWidget->raise();
         SpeedGraph->raise();
-        label_4->raise();
         MapLabel->raise();
         formLayoutWidget_2->raise();
         connectButton->raise();
@@ -1112,14 +1296,19 @@ public:
         remoteLamp->raise();
         failsafeLamp->raise();
         label_22->raise();
-        Voltage->raise();
-        SIV_Data->raise();
         label_24->raise();
         label_25->raise();
         label_27->raise();
-        textLog->raise();
         label_29->raise();
         addButton->raise();
+        latEdit->raise();
+        lonEdit->raise();
+        label_30->raise();
+        label_31->raise();
+        buoyColorLabel->raise();
+        label_32->raise();
+        textLog->raise();
+        formLayoutWidget_3->raise();
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
@@ -1134,41 +1323,37 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionMainMenu->setText(QCoreApplication::translate("MainWindow", "Main Menu", nullptr));
         actionSettings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
-        Yaw->setText(QCoreApplication::translate("MainWindow", "Yaw:", nullptr));
-        Yaw_Data->setText(QCoreApplication::translate("MainWindow", "0.01 \302\260", nullptr));
-        Direction->setText(QCoreApplication::translate("MainWindow", "SetPoint Yaw:", nullptr));
-        Direction_Data->setText(QCoreApplication::translate("MainWindow", "0.01 \302\260", nullptr));
-        GPS_Label2_2->setText(QCoreApplication::translate("MainWindow", "Longitute:", nullptr));
-        Longitude->setText(QCoreApplication::translate("MainWindow", "0.01 ", nullptr));
-        GPS_Label2->setText(QCoreApplication::translate("MainWindow", "Latitude:", nullptr));
-        Latitude->setText(QCoreApplication::translate("MainWindow", "0.01 ", nullptr));
+        Yaw->setText(QCoreApplication::translate("MainWindow", "packetCount:", nullptr));
+        packetCount->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        label_35->setText(QCoreApplication::translate("MainWindow", "Battery Voltage:", nullptr));
+        batteryVoltage->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        label_34->setText(QCoreApplication::translate("MainWindow", "Quest State", nullptr));
+        stageState->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        Voltage->setText(QCoreApplication::translate("MainWindow", "SIV:", nullptr));
+        SIV_Data->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         SicaklikLabel->setText(QCoreApplication::translate("MainWindow", "RC Data:", nullptr));
         RemoteActive_Data->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         label_20->setText(QCoreApplication::translate("MainWindow", "FailSafe", nullptr));
         Failsafe_Data->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
-        SetPointLabel->setText(QCoreApplication::translate("MainWindow", "Set Point:", nullptr));
-        SetPoint_Data->setText(QCoreApplication::translate("MainWindow", "0.0 m/s", nullptr));
-        Speed->setText(QCoreApplication::translate("MainWindow", "Speed:", nullptr));
-        Speed_Data->setText(QCoreApplication::translate("MainWindow", "0.0 m/s", nullptr));
-        label_21->setText(QCoreApplication::translate("MainWindow", "L_Setpoint", nullptr));
-        SetPoint_Data2->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
-        label_23->setText(QCoreApplication::translate("MainWindow", "L_Thrusters", nullptr));
+        label_23->setText(QCoreApplication::translate("MainWindow", "L_Thrusters:", nullptr));
         Speed_Data2->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "R_Setpoint", nullptr));
-        SetPoint_DataR->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
-        label_15->setText(QCoreApplication::translate("MainWindow", "R_Thrusters", nullptr));
+        label_15->setText(QCoreApplication::translate("MainWindow", "R_Thrusters:", nullptr));
         Speed_DataR->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        GPS_Label2_4->setText(QCoreApplication::translate("MainWindow", "GPS Time", nullptr));
+        gpsTime->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        GPS_Label2_8->setText(QCoreApplication::translate("MainWindow", "Heading", nullptr));
+        bnoHeading->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         SpeedFrame->setText(QString());
         label->setText(QCoreApplication::translate("MainWindow", "Speed Graph", nullptr));
         Setpoint_txt->setText(QCoreApplication::translate("MainWindow", "0 m/s", nullptr));
         label_4->setText(QString());
         label_6->setText(QString());
         MapLabel->setText(QCoreApplication::translate("MainWindow", "Map", nullptr));
-        ConStat_2->setText(QCoreApplication::translate("MainWindow", "Ba\304\237lant\304\261 Durumu:", nullptr));
-        statusValueLabel->setText(QCoreApplication::translate("MainWindow", "Pasif", nullptr));
+        ConStat_2->setText(QCoreApplication::translate("MainWindow", "State:", nullptr));
+        statusValueLabel->setText(QCoreApplication::translate("MainWindow", "Passive", nullptr));
         Port->setText(QCoreApplication::translate("MainWindow", "Port:", nullptr));
         portValueLabel->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
-        Baud->setText(QCoreApplication::translate("MainWindow", "Baud Rate", nullptr));
+        Baud->setText(QCoreApplication::translate("MainWindow", "Baud Rate:", nullptr));
         baudValueLabel->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         connectButton->setText(QString());
         label_7->setText(QCoreApplication::translate("MainWindow", " Quest Log", nullptr));
@@ -1189,8 +1374,6 @@ public:
         ___qtablewidgetitem1->setText(QCoreApplication::translate("MainWindow", "Longitude", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = questTable->horizontalHeaderItem(2);
         ___qtablewidgetitem2->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = questTable->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "Add", nullptr));
         sendButton->setText(QString());
         emergencyButton->setText(QString());
         label_17->setText(QString());
@@ -1199,16 +1382,40 @@ public:
         label_19->setText(QCoreApplication::translate("MainWindow", "Heading Graph", nullptr));
         label_18->setText(QString());
         label_22->setText(QCoreApplication::translate("MainWindow", "PWM Graphs", nullptr));
-        Voltage->setText(QCoreApplication::translate("MainWindow", "SIV:", nullptr));
-        SIV_Data->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
         label_16->setText(QString());
-        label_24->setText(QCoreApplication::translate("MainWindow", "\304\260HA", nullptr));
+        label_24->setText(QCoreApplication::translate("MainWindow", "Telemetry", nullptr));
         label_25->setText(QString());
         label_26->setText(QString());
         label_27->setText(QString());
         label_28->setText(QString());
         label_29->setText(QCoreApplication::translate("MainWindow", "Text Log", nullptr));
-        addButton->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+        addButton->setText(QString());
+        label_30->setText(QString());
+        label_31->setText(QCoreApplication::translate("MainWindow", "Target", nullptr));
+        buoyColorLabel->setText(QString());
+        label_32->setText(QString());
+        Yaw_2->setText(QCoreApplication::translate("MainWindow", "Pitch:", nullptr));
+        Pitch_Data->setText(QCoreApplication::translate("MainWindow", "0.01 \302\260", nullptr));
+        Direction_2->setText(QCoreApplication::translate("MainWindow", "Roll:", nullptr));
+        roll_Data->setText(QCoreApplication::translate("MainWindow", "0.01 \302\260", nullptr));
+        GPS_Label2_3->setText(QCoreApplication::translate("MainWindow", "Yaw:", nullptr));
+        Yaw_Data->setText(QCoreApplication::translate("MainWindow", "0.01 \302\260", nullptr));
+        Direction->setText(QCoreApplication::translate("MainWindow", "SetPoint Yaw:", nullptr));
+        Direction_Data->setText(QCoreApplication::translate("MainWindow", "0.01 \302\260", nullptr));
+        SetPointLabel->setText(QCoreApplication::translate("MainWindow", "Speet Setpoint:", nullptr));
+        SetPoint_Data->setText(QCoreApplication::translate("MainWindow", "0.0 m/s", nullptr));
+        Speed->setText(QCoreApplication::translate("MainWindow", "Current Speed:", nullptr));
+        Speed_Data->setText(QCoreApplication::translate("MainWindow", "0.0 m/s", nullptr));
+        GPS_Label2->setText(QCoreApplication::translate("MainWindow", "Latitude:", nullptr));
+        Latitude->setText(QCoreApplication::translate("MainWindow", "0.01 ", nullptr));
+        GPS_Label2_2->setText(QCoreApplication::translate("MainWindow", "Longitute:", nullptr));
+        Longitude->setText(QCoreApplication::translate("MainWindow", "0.01 ", nullptr));
+        linX->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        GPS_Label2_5->setText(QCoreApplication::translate("MainWindow", "linX", nullptr));
+        linY->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        GPS_Label2_6->setText(QCoreApplication::translate("MainWindow", "linY", nullptr));
+        linZ->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        GPS_Label2_7->setText(QCoreApplication::translate("MainWindow", "linZ", nullptr));
     } // retranslateUi
 
 };

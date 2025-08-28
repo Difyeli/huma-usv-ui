@@ -134,6 +134,7 @@ debug/qrc_resources.cpp: ../../resources.qrc \
 		../../images/ParameterLogo.png \
 		../../images/Background1.png \
 		../../images/Graph.png \
+		../../images/Frame.png \
 		../../images/PWMLogo.png \
 		../../images/SettingsButton.png \
 		../../images/Background2.png \
@@ -143,17 +144,23 @@ debug/qrc_resources.cpp: ../../resources.qrc \
 		../../images/sendButton.png \
 		../../images/DirectionLogo.png \
 		../../images/IDALogo.png \
+		../../images/LLFrame.png \
 		../../images/taleback.png \
 		../../images/ConnectButton.png \
 		../../images/Telemetri.png \
+		../../images/Buoy_B.png \
 		../../images/paramButton.png \
 		../../images/SpeedLogo.png \
 		../../images/GraphRect.png \
 		../../images/MapLogo.png \
 		../../images/TelemetryLogo.png \
 		../../images/WhiteBG.png \
+		../../images/Buoy_R.png \
 		../../images/EmergencyButton.png \
+		../../images/Add-Selected.png \
+		../../images/Buoy_G.png \
 		../../images/GraphSquare.png \
+		../../images/TextLog.png \
 		../../images/Background4.png \
 		../../images/GrayBG.png \
 		../../images/QuestLogo.png \
@@ -161,7 +168,8 @@ debug/qrc_resources.cpp: ../../resources.qrc \
 		../../images/DisconnectButton.png \
 		../../images/StopButton.png \
 		../../images/Background5.png \
-		../../images/Background3.png
+		../../images/Background3.png \
+		../../images/Add-NotSelected.png
 	D:\Qt\6.8.3\mingw_64\bin\rcc.exe -name resources --no-zstd ..\..\resources.qrc -o debug\qrc_resources.cpp
 
 debug/qrc_qmake_qmake_qm_files.cpp: debug/qmake_qmake_qm_files.qrc \
@@ -1774,16 +1782,6 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qlabel.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qpicture.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextdocument.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPlainTextEdit \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qplaintextedit.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtextedit.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextcursor.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextformat.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qabstracttextdocumentlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextlayout.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qglyphrun.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qrawfont.h \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qfontdatabase.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QPushButton \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qpushbutton.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qabstractbutton.h \
@@ -1792,6 +1790,10 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QTableWidget \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtablewidget.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtableview.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QTextEdit \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qtextedit.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextcursor.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/qtextformat.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QWidget \
 		../../connectionsettingsdialog.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QDialog \
@@ -1819,7 +1821,10 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QThread \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtGui/QColor \
 		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/QScrollBar \
-		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qscrollbar.h
+		../../../../../../Qt/6.8.3/mingw_64/include/QtWidgets/qscrollbar.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/QTimer \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qtimer.h \
+		../../../../../../Qt/6.8.3/mingw_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\..\mainwindow.cpp
 
 debug/qrc_qml.o: debug/qrc_qml.cpp 
