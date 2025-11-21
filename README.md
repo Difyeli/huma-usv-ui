@@ -1,7 +1,7 @@
 # HUMA-USV-UI — Ground Control Station (Qt)
 A lightweight Qt (C++) Ground Control Station for an Uncrewed Surface Vehicle (USV). Includes map-based mission planning, live telemetry, charts, and an emergency action.
 # Screenshot
-![prew](https://github.com/Difyeli/huma-usv-ui/blob/2050f3b03f4c28329ec0d691521ed7e9a68c5a2f/ScreenShot.png)
+![prew](https://github.com/Difyeli/huma-usv-ui/blob/175b9c892e584817296f3eb53604bdb45cad4e71/ScreenShot.jpeg)
 
 # Features
 -	Map mission planning (add/delete waypoints, send to vehicle)
