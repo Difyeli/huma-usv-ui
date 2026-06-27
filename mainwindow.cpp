@@ -66,6 +66,23 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // sendButton ikonu
+    ui->sendButton->setIcon(QIcon(":/images/sendButton.png"));
+    ui->sendButton->setIconSize(QSize(110, 33));
+
+    // startButton ikonları
+    ui->startButton->setIcon(QIcon(":/images/StartButton.png"));
+    ui->startButton->setIconSize(QSize(110, 33));
+
+    // startButton checked olduğunda ikon değiştir
+    connect(ui->startButton, &QPushButton::toggled, this, [this](bool checked){
+        if (checked)
+            ui->startButton->setIcon(QIcon(":/images/StopButton.png"));
+        else
+            ui->startButton->setIcon(QIcon(":/images/StartButton.png"));
+    });
+
+
 
     logFlushTimer = new QTimer(this);
     logFlushTimer->setInterval(100); // 100 ms'de bir
@@ -418,31 +435,84 @@ void MainWindow::on_sendButton_clicked()
 }
 
 
-void MainWindow::on_emergencyButton_clicked()
+void MainWindow::on_startButton_clicked(bool checked)
 {
-    // Seri portun bağlı olup olmadığını kontrol edin
+    if (!serial->isOpen()) {
+        QMessageBox::warning(this,
+                             tr("Hata"),
+                             tr("Lütfen önce bağlantıyı açın!"));
+        // Butonu eski haline döndür
+        ui->startButton->setChecked(!checked);
+        return;
+    }
+
+    if (checked) {
+        // Start komutu gönder
+        const QByteArray startCmd = "$start\n";
+        qint64 bytes = serial->write(startCmd);
+        if (bytes == startCmd.size()) {
+            addLogMessage("Görev başlatıldı", "success");
+            ui->statusValueLabel->setText(tr("Aktif"));
+        } else {
+            QMessageBox::critical(this,
+                                  tr("Hata"),
+                                  tr("Start komutu gönderilemedi:\n%1")
+                                      .arg(serial->errorString()));
+            ui->startButton->setChecked(false);
+        }
+    } else {
+        // Stop komutu gönder
+        const QByteArray stopCmd = "$stop\n";
+        qint64 bytes = serial->write(stopCmd);
+        if (bytes == stopCmd.size()) {
+            addLogMessage("Görev durduruldu", "warning");
+            ui->statusValueLabel->setText(tr("Pasif"));
+        } else {
+            QMessageBox::critical(this,
+                                  tr("Hata"),
+                                  tr("Stop komutu gönderilemedi:\n%1")
+                                      .arg(serial->errorString()));
+            ui->startButton->setChecked(true);
+        }
+    }
+}
+
+void MainWindow::on_emergencyButton_clicked(bool checked)
+{
     if (!serial->isOpen()) {
         QMessageBox::warning(this,
                              tr("Acil Durdurma"),
                              tr("Lütfen önce bağlantıyı açın!"));
+        ui->emergencyButton->setChecked(!checked); // butonu eski haline döndür
         return;
     }
 
-    // Gönderilecek durdurma komutu
-    // (Aracınızın protokolüne göre düzenleyin)
-    const QByteArray stopCmd = "!failsafe\n";
-
-    qint64 bytes = serial->write(stopCmd);
-    if (bytes == stopCmd.size()) {
-        QMessageBox::information(this,
-                                 tr("Acil Durdurma"),
-                                 tr("Acil durdurma komutu gönderildi."));
-        ui->statusValueLabel->setText(tr("DURDURULDU"));
+    if (!checked) {
+        // Acil durdurma aktif et
+        const QByteArray stopCmd = "!FS2\n";
+        qint64 bytes = serial->write(stopCmd);
+        if (bytes == stopCmd.size()) {
+            addLogMessage("Acil durdurma aktif edildi", "error");
+            ui->statusValueLabel->setText(tr("DURDURULDU"));
+        } else {
+            QMessageBox::critical(this, tr("Hata"),
+                                  tr("Komut gönderilemedi:\n%1")
+                                      .arg(serial->errorString()));
+            ui->emergencyButton->setChecked(false); // başarısızsa geri al
+        }
     } else {
-        QMessageBox::critical(this,
-                              tr("Acil Durdurma Hatası"),
-                              tr("Komut gönderilemedi:\n%1")
-                                  .arg(serial->errorString()));
+        // Acil durdurma kaldır
+        const QByteArray resumeCmd = "!FS0\n";
+        qint64 bytes = serial->write(resumeCmd);
+        if (bytes == resumeCmd.size()) {
+            addLogMessage("Acil durdurma kaldırıldı", "success");
+            ui->statusValueLabel->setText(tr("Aktif"));
+        } else {
+            QMessageBox::critical(this, tr("Hata"),
+                                  tr("Komut gönderilemedi:\n%1")
+                                      .arg(serial->errorString()));
+            ui->emergencyButton->setChecked(true); // başarısızsa geri al
+        }
     }
 }
 
@@ -469,7 +539,7 @@ void MainWindow::handleSerialData()
         if (parts.size() < 22)
             continue;
         bool   remoteActive     = parts[1].toInt() == 1;
-        bool   failsafe         = parts[2].toInt() == 1;
+        QString failsafe         = parts[2];
         QString gpsTime         = parts[3];
 
         double latitude         = parts[4].toDouble();
@@ -522,7 +592,7 @@ void MainWindow::handleSerialData()
         ui->Direction_Data  ->setText(QString::number(headingRequest,    'f', 2) + " °");
         ui->SIV_Data        ->setText(QString::number(SIV));
         ui->RemoteActive_Data->setText(remoteActive ? "Yes" : "No");
-        ui->Failsafe_Data   ->setText(failsafe ? "FS1" : "OK");
+        ui->Failsafe_Data   ->setText(failsafe);
         ui->SetPoint_Data->setText(QString::number(setPoint,'f',2)+" m/s");
         ui->Speed_Data   ->setText(QString::number(currentSpeed,'f',2)+" m/s");
         ui->Speed_Data2   ->setText(QString::number(leftPWM,'f',2));
@@ -569,7 +639,9 @@ void MainWindow::handleSerialData()
             else if (specialMessage == "VOLT_ERR") addLogMessage("Pil voltajı düşük", "error");
             else if (specialMessage == "MOTOR_ERR") addLogMessage("Motor arızası", "error");
             else if (specialMessage == "SENSOR_ERR") addLogMessage("Sensör hatası", "error");
-            else addLogMessage("Bilinmeyen mesaj: " + specialMessage, "warning");
+            else if (specialMessage == "RMT_CON_ERR") addLogMessage("Kumanda bağlantı hatası", "error");
+            else if (specialMessage == "RMT_CON") addLogMessage("Kumanda bağlantısı geri geldi", "warning");
+            else addLogMessage("Bilinmeyen mesaj: " + specialMessage, specialMessage);
         }
 
 
@@ -652,7 +724,7 @@ void MainWindow::handleSerialData()
             *csvStream << ts << ','                           // Timestamp
                        << packetCount << ','                  // PacketCount
                        << (remoteActive ? 1 : 0) << ','        // RemoteActive
-                       << (failsafe ? 1 : 0) << ','            // Failsafe
+                       << (failsafe) << ','            // Failsafe
                        << gpsTime << ','                      // GPS Time
                        << latitude << ',' << longitude << ',' // Coordinates
                        << SIV << ','                          // SIV
@@ -674,6 +746,7 @@ void MainWindow::handleSerialData()
         ui->connectButton->setEnabled(true);
         ui->connectButton->setToolTip("");
     }
+
 }
 
 
@@ -874,5 +947,3 @@ void MainWindow::addLogMessage(const QString &message, const QString &type)
     ui->textLog->append(htmlMessage); // HTML olarak ekler
     ui->textLog->moveCursor(QTextCursor::End); // Otomatik scroll
 }
-
-
